@@ -1,17 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
-import {Button} from '../components/Button';
-import {ListItem} from '../components/ListItem';
 import {ModalComponent} from '../components/ModalComponent';
 import {Paragraph} from '../components/Paragraph';
-import {AddProductScreenNavigationProp} from '../navigation/StackNavigation';
+import {ProductList} from '../components/ProductList';
+import {DetailsScreenNavigationProp} from '../navigation/StackNavigation';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {getProducts} from '../store/products/productsOperations';
 import {
@@ -21,7 +14,7 @@ import {
 } from '../store/products/productsSlice';
 
 type HomeProps = {
-  navigation: AddProductScreenNavigationProp;
+  navigation: DetailsScreenNavigationProp;
 };
 
 export function Home({navigation}: HomeProps) {
@@ -34,19 +27,14 @@ export function Home({navigation}: HomeProps) {
 
   const productsAll = useAppSelector(getProductsAll);
   const isLoading = useAppSelector(getIsLoading);
-
   const isError = useAppSelector(getError);
-
-  const addItem = () => {
-    navigation.navigate('AddProduct');
-  };
-
-  const showDetails = (id: number | string) => {
-    navigation.navigate('Details', {productId: id});
-  };
 
   const modalToggle = () => {
     setModalVisible(!modalVisible);
+  };
+
+  const setSelectedProductIdHandler = (id: number | string) => {
+    setSelectedProductId(id);
   };
 
   useEffect(() => {
@@ -65,23 +53,12 @@ export function Home({navigation}: HomeProps) {
 
   return (
     <View style={styles.layout}>
-      <FlatList
-        data={productsAll}
-        renderItem={({item}) => (
-          <TouchableOpacity
-            style={styles.listItem}
-            onPress={() => showDetails(item.id)}
-            onLongPress={() => {
-              setSelectedProductId(item.id);
-              modalToggle();
-            }}>
-            <ListItem item={item} />
-          </TouchableOpacity>
-        )}
-        keyExtractor={item => item.id.toString()}
-        contentContainerStyle={styles.list}
+      <ProductList
+        products={productsAll}
+        modalToggle={modalToggle}
+        setSelectedProductIdHandler={setSelectedProductIdHandler}
+        navigation={navigation}
       />
-      <Button onPress={addItem}>Add item</Button>
       {selectedProductId !== null && (
         <ModalComponent
           modalVisible={modalVisible}
@@ -99,17 +76,5 @@ const styles = StyleSheet.create({
     padding: 10,
     gap: 10,
     backgroundColor: '#DACAB0',
-  },
-
-  list: {
-    gap: 10,
-  },
-
-  listItem: {
-    flex: 1,
-    borderWidth: 2,
-    borderRadius: 20,
-    overflow: 'hidden',
-    borderColor: '#de612b',
   },
 });

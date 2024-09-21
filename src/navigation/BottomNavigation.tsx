@@ -1,0 +1,57 @@
+/* eslint-disable react/no-unstable-nested-components */
+import React from 'react';
+
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import {Heart} from '../components/icons/Heart';
+import {Home} from '../components/icons/Home';
+import {Plus} from '../components/icons/Plus';
+import {AddProduct} from '../screens/AddProduct';
+import {Favorites} from '../screens/Favorites';
+import {useAppSelector} from '../store/hooks';
+import {getFavoriteProducts} from '../store/products/productsSlice';
+import {StackNavigation} from './StackNavigation';
+
+const Tab = createBottomTabNavigator();
+
+export function BottomNavigation() {
+  const favoriteLength = useAppSelector(getFavoriteProducts).length;
+
+  return (
+    <>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarStyle: {backgroundColor: '#de612b'},
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveTintColor: 'black',
+        }}>
+        <Tab.Screen
+          options={{
+            tabBarIcon: ({color}) => <Home color={color} />,
+            headerShown: false,
+          }}
+          name="HomeScreen"
+          component={StackNavigation}
+        />
+
+        <Tab.Screen
+          options={{
+            tabBarIcon: ({color}) => <Plus color={color} />,
+          }}
+          name="Add product"
+          component={AddProduct}
+        />
+
+        <Tab.Screen
+          options={{
+            tabBarIcon: ({color}) => <Heart color={color} />,
+            tabBarBadge: favoriteLength,
+          }}
+          name="Favorites"
+          component={Favorites}
+        />
+      </Tab.Navigator>
+    </>
+  );
+}

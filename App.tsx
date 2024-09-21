@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {PersistGate} from 'redux-persist/integration/react';
 
-import {StackNavigation} from './src/navigation/StackNavigation';
+import {BottomNavigation} from './src/navigation/BottomNavigation';
 import {persist, store} from './src/store/store';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persist}>
         <NavigationContainer>
-          <StackNavigation />
+          <BottomNavigation />
         </NavigationContainer>
       </PersistGate>
     </Provider>

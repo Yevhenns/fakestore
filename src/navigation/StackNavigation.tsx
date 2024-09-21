@@ -3,14 +3,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Home} from '../screens/Home';
 import {Details} from '../screens/Details';
 import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/native-stack/types';
-import {AddItem} from '../screens/AddItem';
+import {AddProduct} from '../screens/AddProduct';
 
 const Stack = createStackNavigator();
 
 type RootStackParamList = {
   Home: undefined;
   Details: undefined;
-  AddItem: undefined;
+  AddProduct: undefined;
 };
 
 export type HomeScreenNavigationProp = NativeStackNavigationProp<
@@ -23,9 +23,9 @@ export type DetailsScreenNavigationProp = NativeStackNavigationProp<
   'Details'
 >;
 
-export type AddItemScreenNavigationProp = NativeStackNavigationProp<
+export type AddProductScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'AddItem'
+  'AddProduct'
 >;
 
 export function StackNavigation() {
@@ -50,10 +50,10 @@ export function StackNavigation() {
         }}
       />
       <Stack.Screen
-        name="AddItem"
-        component={AddItem}
+        name="AddProduct"
+        component={AddProduct}
         options={{
-          title: 'AddItem',
+          title: 'Add product',
         }}
       />
     </Stack.Navigator>

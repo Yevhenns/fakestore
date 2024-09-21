@@ -1,18 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Button} from '../components/Button';
-import {HomeScreenNavigationProp} from '../navigation/StackNavigation';
+import {AddProductScreenNavigationProp} from '../navigation/StackNavigation';
 import {ListItem} from '../components/ListItem';
 
 type HomeProps = {
-  navigation: HomeScreenNavigationProp;
+  navigation: AddProductScreenNavigationProp;
 };
 
 export function Home({navigation}: HomeProps) {
   const [products, setProducts] = useState<ApiItem[] | []>([]);
 
   const addItem = () => {
-    navigation.navigate('AddItem');
+    navigation.navigate('AddProduct');
   };
 
   useEffect(() => {
@@ -28,11 +28,14 @@ export function Home({navigation}: HomeProps) {
     <View style={styles.layout}>
       <FlatList
         data={products}
-        renderItem={({item}) => <ListItem item={item} />}
+        renderItem={({item}) => (
+          <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+            <ListItem item={item} />
+          </TouchableOpacity>
+        )}
         keyExtractor={item => item.id.toString()}
         contentContainerStyle={styles.list}
       />
-      <Button onPress={() => navigation.navigate('Details')}>Details</Button>
       <Button onPress={addItem}>Add item</Button>
     </View>
   );

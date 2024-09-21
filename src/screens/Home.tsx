@@ -73,7 +73,7 @@ export function Home({navigation}: HomeProps) {
             onPress={() => showDetails(item.id)}
             onLongPress={() => {
               setSelectedProductId(item.id);
-              setModalVisible(!modalVisible);
+              modalToggle();
             }}>
             <ListItem item={item} />
           </TouchableOpacity>
@@ -82,7 +82,7 @@ export function Home({navigation}: HomeProps) {
         contentContainerStyle={styles.list}
       />
       <Button onPress={addItem}>Add item</Button>
-      {selectedProductId !== null && modalVisible && (
+      {selectedProductId !== null && (
         <ModalComponent
           modalVisible={modalVisible}
           modalToggle={modalToggle}

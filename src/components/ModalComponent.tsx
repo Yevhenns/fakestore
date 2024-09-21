@@ -31,7 +31,7 @@ export function ModalComponent({
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          modalToggle;
+          modalToggle();
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalWrapper}>

@@ -2614,6 +2614,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "@types/uuid@npm:10.0.0"
+  checksum: e3958f8b0fe551c86c14431f5940c3470127293280830684154b91dc7eb3514aeb79fe3216968833cf79d4d1c67f580f054b5be2cd562bebf4f728913e73e944
+  languageName: node
+  linkType: hard
+
 "@types/yargs-parser@npm:*":
   version: 21.0.3
   resolution: "@types/yargs-parser@npm:21.0.3"
@@ -4473,6 +4480,7 @@ __metadata:
     "@reduxjs/toolkit": ^2.2.7
     "@trivago/prettier-plugin-sort-imports": ^4.3.0
     "@types/react": ^18.2.6
+    "@types/uuid": ^10.0.0
     eslint: ^8.19.0
     formik: ^2.4.6
     prettier: 2.8.8
@@ -4482,6 +4490,7 @@ __metadata:
     react-native-gesture-handler: ^2.19.0
     react-native-safe-area-context: ^4.11.0
     react-native-screens: ^3.34.0
+    react-native-uuid: ^2.0.2
     react-redux: ^9.1.2
     redux-persist: ^6.0.0
     typescript: 5.0.4
@@ -7316,6 +7325,13 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 28c1f6e556c318ffcbd79d153b9612cc8a0b8d8b70f909d3cde2fd6d0586a7c151a449e57400d8996f4ee6c3b5140c5c4f643a427e974f6dc573b2bcd8eb7356
+  languageName: node
+  linkType: hard
+
+"react-native-uuid@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "react-native-uuid@npm:2.0.2"
+  checksum: 149f65549132a240ac237f4db34063fd08473e4b3a9b5958e3d0d6722cf10754efb222b1c6085a3dc42e0718ca9575b38cd5535ae83a96534dde0f54d343e915
   languageName: node
   linkType: hard
 

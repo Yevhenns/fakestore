@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -9,6 +9,7 @@ import {
 
 import {Button} from '../components/Button';
 import {ListItem} from '../components/ListItem';
+import {ModalComponent} from '../components/ModalComponent';
 import {Paragraph} from '../components/Paragraph';
 import {AddProductScreenNavigationProp} from '../navigation/StackNavigation';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
@@ -24,18 +25,28 @@ type HomeProps = {
 };
 
 export function Home({navigation}: HomeProps) {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState<
+    number | string | null
+  >(null);
+
   const dispatch = useAppDispatch();
 
   const productsAll = useAppSelector(getProductsAll);
   const isLoading = useAppSelector(getIsLoading);
+
   const isError = useAppSelector(getError);
 
   const addItem = () => {
     navigation.navigate('AddProduct');
   };
 
-  const showDetails = (id: number) => {
+  const showDetails = (id: number | string) => {
     navigation.navigate('Details', {productId: id});
+  };
+
+  const modalToggle = () => {
+    setModalVisible(!modalVisible);
   };
 
   useEffect(() => {
@@ -59,7 +70,11 @@ export function Home({navigation}: HomeProps) {
         renderItem={({item}) => (
           <TouchableOpacity
             style={styles.listItem}
-            onPress={() => showDetails(item.id)}>
+            onPress={() => showDetails(item.id)}
+            onLongPress={() => {
+              setSelectedProductId(item.id);
+              setModalVisible(!modalVisible);
+            }}>
             <ListItem item={item} />
           </TouchableOpacity>
         )}
@@ -67,6 +82,13 @@ export function Home({navigation}: HomeProps) {
         contentContainerStyle={styles.list}
       />
       <Button onPress={addItem}>Add item</Button>
+      {selectedProductId !== null && modalVisible && (
+        <ModalComponent
+          modalVisible={modalVisible}
+          modalToggle={modalToggle}
+          selectedProductId={selectedProductId}
+        />
+      )}
     </View>
   );
 }

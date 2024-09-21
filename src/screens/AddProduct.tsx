@@ -7,25 +7,20 @@ import {
   View,
 } from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
+import uuid from 'react-native-uuid';
 
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 
+import {categories} from '../assets/categories';
 import {Button} from '../components/Button';
 import {HomeScreenNavigationProp} from '../navigation/StackNavigation';
-import {useAppDispatch, useAppSelector} from '../store/hooks';
-import {addProduct, getProductsAll} from '../store/products/productsSlice';
+import {useAppDispatch} from '../store/hooks';
+import {addProduct} from '../store/products/productsSlice';
 
 type AddProductProps = {
   navigation: HomeScreenNavigationProp;
 };
-
-const categories = [
-  {label: "men's clothing", value: "men's clothing"},
-  {label: 'jewelery', value: 'jewelery'},
-  {label: 'electronics', value: 'electronics'},
-  {label: "women's clothing", value: "women's clothing"},
-];
 
 const AddProductFormSchema = Yup.object().shape({
   title: Yup.string().max(100, 'Title is too long').required('Required'),
@@ -35,11 +30,7 @@ const AddProductFormSchema = Yup.object().shape({
 });
 
 export function AddProduct({navigation}: AddProductProps) {
-  const productsAll = useAppSelector(getProductsAll);
-
   const dispatch = useAppDispatch();
-
-  const newProductId = productsAll.length + 1;
 
   const submit = (data: {
     title: string;
@@ -48,7 +39,7 @@ export function AddProduct({navigation}: AddProductProps) {
     category: string;
   }) => {
     const newItem: Product = {
-      id: newProductId,
+      id: uuid.v4() as string,
       title: data.title,
       price: Number(data.price),
       description: data.description,

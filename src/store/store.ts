@@ -7,11 +7,10 @@ import {productsReducer} from './products/productsSlice';
 const rootPersistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['allProducts'],
 };
 
 const rootReducer = combineReducers({
-  allProducts: productsReducer,
+  products: productsReducer,
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);

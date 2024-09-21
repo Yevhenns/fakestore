@@ -10,11 +10,17 @@ const initialState = {
 };
 
 const productsSlice = createSlice({
-  name: 'allProducts',
+  name: 'products',
   initialState,
   reducers: {
     addProduct(state, action: {payload: Product}) {
       state.productsAll = [action.payload, ...state.productsAll];
+    },
+    deleteProduct(state, action: {payload: number | string}) {
+      const filteredArr = state.productsAll.filter(
+        item => item.id !== action.payload,
+      );
+      state.productsAll = filteredArr;
     },
   },
   extraReducers: builder =>
@@ -43,9 +49,8 @@ const productsSlice = createSlice({
 
 export const productsReducer = productsSlice.reducer;
 
-export const getProductsAll = (state: RootState) =>
-  state.allProducts.productsAll;
-export const getIsLoading = (state: RootState) => state.allProducts.isLoading;
-export const getError = (state: RootState) => state.allProducts.error;
+export const getProductsAll = (state: RootState) => state.products.productsAll;
+export const getIsLoading = (state: RootState) => state.products.isLoading;
+export const getError = (state: RootState) => state.products.error;
 
-export const {addProduct} = productsSlice.actions;
+export const {addProduct, deleteProduct} = productsSlice.actions;

@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 export type RootStackParamList = {
   Home: undefined;
-  Details: {productId: number};
+  Details: {productId: number | string};
   AddProduct: undefined;
 };
 

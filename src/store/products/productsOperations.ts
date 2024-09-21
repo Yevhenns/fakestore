@@ -6,7 +6,7 @@ export const getProducts = createAsyncThunk<
   {
     rejectValue: string;
   }
->('allProducts/getProductsAll', async (_, {rejectWithValue}) => {
+>('products/getProductsAll', async (_, {rejectWithValue}) => {
   try {
     const response = await fetch('https://fakestoreapi.com/products');
     const jsonData = await response.json();

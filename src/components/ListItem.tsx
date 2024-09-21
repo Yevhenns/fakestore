@@ -7,7 +7,12 @@ type ListItemProps = {item: ApiItem};
 export function ListItem({item}: ListItemProps) {
   return (
     <View style={styles.layout}>
-      <Image source={{uri: item.image}} width={125} height={139} />
+      <Image
+        source={{uri: item.image}}
+        width={125}
+        height={139}
+        resizeMode="contain"
+      />
       <View style={styles.textWrapper}>
         <Paragraph>{item.title}</Paragraph>
         <Paragraph>Price: {item.price} $</Paragraph>
@@ -18,10 +23,6 @@ export function ListItem({item}: ListItemProps) {
 
 const styles = StyleSheet.create({
   layout: {
-    padding: 5,
-    borderWidth: 2,
-    borderRadius: 10,
-    borderColor: '#de612b',
     display: 'flex',
     flexDirection: 'row',
     gap: 10,

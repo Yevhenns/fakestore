@@ -7,9 +7,9 @@ import {AddProduct} from '../screens/AddProduct';
 
 const Stack = createStackNavigator();
 
-type RootStackParamList = {
+export type RootStackParamList = {
   Home: undefined;
-  Details: undefined;
+  Details: {productId: number};
   AddProduct: undefined;
 };
 

@@ -1,21 +1,28 @@
+import {RouteProp, useRoute} from '@react-navigation/native';
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {useAppSelector} from '../store/hooks';
+import {getProductsAll} from '../store/products/productsSlice';
+import {ListItem} from '../components/ListItem';
+import {RootStackParamList} from '../navigation/StackNavigation';
+import {AdditionalInfo} from '../components/AdditionalInfo';
 
-// type DetailsProps = {
-//   title: string;
-//   price: number;
-// };
+export function Details() {
+  const productsAll = useAppSelector(getProductsAll);
 
-export function Details({
-  title = 'title',
-  price = 450,
-  image = 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
-}) {
+  const route = useRoute<RouteProp<RootStackParamList, 'Details'>>();
+  console.log(route.params?.productId);
+
+  const product = productsAll.find(item => item.id === route.params?.productId);
+
   return (
     <View style={styles.layout}>
-      <Image source={{uri: image}} width={200} height={200} />
-      <Text>{title}</Text>
-      <Text>Price: {price}</Text>
+      {product && (
+        <>
+          <ListItem item={product} />
+          <AdditionalInfo item={product} />
+        </>
+      )}
     </View>
   );
 }
@@ -24,7 +31,6 @@ const styles = StyleSheet.create({
   layout: {
     flex: 1,
     padding: 10,
-    gap: 10,
-    backgroundColor: '#DACAB0',
+    backgroundColor: '#F0F2F8',
   },
 });

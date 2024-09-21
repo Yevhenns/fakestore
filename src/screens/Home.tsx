@@ -1,35 +1,62 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
+import React, {useEffect} from 'react';
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {Button} from '../components/Button';
 import {AddProductScreenNavigationProp} from '../navigation/StackNavigation';
 import {ListItem} from '../components/ListItem';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
+import {
+  getError,
+  getIsLoading,
+  getProductsAll,
+} from '../store/products/productsSlice';
+import {getProducts} from '../store/products/productsOperations';
+import {Paragraph} from '../components/Paragraph';
 
 type HomeProps = {
   navigation: AddProductScreenNavigationProp;
 };
 
 export function Home({navigation}: HomeProps) {
-  const [products, setProducts] = useState<ApiItem[] | []>([]);
+  const dispatch = useAppDispatch();
+
+  const productsAll = useAppSelector(getProductsAll);
+  const isLoading = useAppSelector(getIsLoading);
+  const isError = useAppSelector(getError);
 
   const addItem = () => {
     navigation.navigate('AddProduct');
   };
 
+  const showDetails = (id: number) => {
+    navigation.navigate('Details', {productId: id});
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('https://fakestoreapi.com/products');
-      const jsonData = await response.json();
-      setProducts(jsonData);
-    };
-    fetchData();
-  }, []);
+    dispatch(getProducts());
+  }, [dispatch]);
+
+  if (isError) {
+    return <Paragraph>Error</Paragraph>;
+  }
+
+  if (isLoading) {
+    return <ActivityIndicator size={'large'} />;
+  }
 
   return (
     <View style={styles.layout}>
       <FlatList
-        data={products}
+        data={productsAll}
         renderItem={({item}) => (
-          <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+          <TouchableOpacity
+            style={styles.listItem}
+            onPress={() => showDetails(item.id)}>
             <ListItem item={item} />
           </TouchableOpacity>
         )}
@@ -51,5 +78,13 @@ const styles = StyleSheet.create({
 
   list: {
     gap: 10,
+  },
+
+  listItem: {
+    flex: 1,
+    borderWidth: 2,
+    borderRadius: 20,
+    overflow: 'hidden',
+    borderColor: '#de612b',
   },
 });

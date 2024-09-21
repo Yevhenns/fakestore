@@ -5,7 +5,7 @@ import {Paragraph} from './Paragraph';
 
 type ListItemProps = {item: Product};
 
-export function ListItem({item}: ListItemProps) {
+export const ListItem = React.memo(({item}: ListItemProps) => {
   return (
     <View style={styles.layout}>
       <Image
@@ -20,7 +20,7 @@ export function ListItem({item}: ListItemProps) {
       </View>
     </View>
   );
-}
+});
 
 const styles = StyleSheet.create({
   layout: {

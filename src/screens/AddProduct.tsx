@@ -13,8 +13,8 @@ import * as Yup from 'yup';
 
 import {Button} from '../components/Button';
 import {HomeScreenNavigationProp} from '../navigation/StackNavigation';
-import {useAppDispatch} from '../store/hooks';
-import {addProduct} from '../store/products/productsSlice';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
+import {addProduct, getProductsAll} from '../store/products/productsSlice';
 
 type AddProductProps = {
   navigation: HomeScreenNavigationProp;
@@ -35,7 +35,11 @@ const AddProductFormSchema = Yup.object().shape({
 });
 
 export function AddProduct({navigation}: AddProductProps) {
+  const productsAll = useAppSelector(getProductsAll);
+
   const dispatch = useAppDispatch();
+
+  const newProductId = productsAll.length + 1;
 
   const submit = (data: {
     title: string;
@@ -44,7 +48,7 @@ export function AddProduct({navigation}: AddProductProps) {
     category: string;
   }) => {
     const newItem: Product = {
-      id: 50,
+      id: newProductId,
       title: data.title,
       price: Number(data.price),
       description: data.description,
@@ -53,7 +57,6 @@ export function AddProduct({navigation}: AddProductProps) {
       rating: {rate: 0, count: 0},
     };
     dispatch(addProduct(newItem));
-    console.log(newItem);
     navigation.navigate('Home');
   };
 

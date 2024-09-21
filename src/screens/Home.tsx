@@ -39,8 +39,10 @@ export function Home({navigation}: HomeProps) {
   };
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    if (productsAll.length === 0) {
+      dispatch(getProducts());
+    }
+  }, [dispatch, productsAll.length]);
 
   if (isError) {
     return <Paragraph>Error</Paragraph>;

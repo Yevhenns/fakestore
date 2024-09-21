@@ -5,7 +5,7 @@ import {Paragraph} from './Paragraph';
 
 type AdditionalInfoProps = {item: Product};
 
-export function AdditionalInfo({item}: AdditionalInfoProps) {
+export const AdditionalInfo = React.memo(({item}: AdditionalInfoProps) => {
   return (
     <View style={styles.layout}>
       <Paragraph>{item.description}</Paragraph>
@@ -16,7 +16,7 @@ export function AdditionalInfo({item}: AdditionalInfoProps) {
       </View>
     </View>
   );
-}
+});
 
 const styles = StyleSheet.create({
   layout: {

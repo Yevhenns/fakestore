@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   GestureResponderEvent,
   StyleSheet,
@@ -27,22 +27,22 @@ const AddProductFormSchema = Yup.object().shape({
   title: Yup.string().max(100, 'Title is too long').required('Required'),
   price: Yup.number().min(1, 'Min 1 number').required('Required'),
   description: Yup.string().required('Required'),
+  category: Yup.string().required('Required'),
 });
 
 export function AddProduct({navigation}: AddProductProps) {
-  const [categoryValue, setCategoryValue] = useState('');
-
   const submit = (data: {
     title: string;
     price: number;
     description: string;
+    category: string;
   }) => {
     const newItem: ApiItem = {
       id: 50,
       title: data.title,
       price: Number(data.price),
       description: data.description,
-      category: categoryValue,
+      category: data.category,
       image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
       rating: {rate: 0, count: 0},
     };
@@ -71,48 +71,67 @@ export function AddProduct({navigation}: AddProductProps) {
           handleChange,
           handleBlur,
           handleSubmit,
+          setFieldValue,
           values,
           errors,
           touched,
         }) => (
           <>
-            <TextInput
-              style={styles.input}
-              placeholder="Title"
-              value={values.title}
-              onChangeText={handleChange('title')}
-              onBlur={handleBlur('title')}
-            />
-            {touched.title && <Text>{errors.title}</Text>}
+            <View>
+              <TextInput
+                style={styles.input}
+                placeholder="Title"
+                value={values.title}
+                onChangeText={handleChange('title')}
+                onBlur={handleBlur('title')}
+              />
+              <View style={styles.errorWrapper}>
+                {touched.title && errors.title && (
+                  <Text style={styles.errorMessage}>{errors.title}</Text>
+                )}
+              </View>
 
-            <TextInput
-              style={styles.input}
-              placeholder="Price"
-              value={values.price.toString()}
-              onChangeText={handleChange('price')}
-              onBlur={handleBlur('price')}
-              keyboardType="phone-pad"
-            />
-            {touched.title && <Text>{errors.price}</Text>}
+              <TextInput
+                style={styles.input}
+                placeholder="Price"
+                value={values.price.toString()}
+                onChangeText={handleChange('price')}
+                onBlur={handleBlur('price')}
+                keyboardType="phone-pad"
+              />
+              <View style={styles.errorWrapper}>
+                {touched.price && errors.price && (
+                  <Text style={styles.errorMessage}>{errors.price}</Text>
+                )}
+              </View>
 
-            <TextInput
-              style={styles.input}
-              placeholder="Description"
-              value={values.description}
-              onChangeText={handleChange('description')}
-              onBlur={handleBlur('description')}
-            />
-            {touched.title && <Text>{errors.description}</Text>}
+              <TextInput
+                style={styles.input}
+                placeholder="Description"
+                value={values.description}
+                onChangeText={handleChange('description')}
+                onBlur={handleBlur('description')}
+              />
+              <View style={styles.errorWrapper}>
+                {touched.description && errors.description && (
+                  <Text style={styles.errorMessage}>{errors.description}</Text>
+                )}
+              </View>
 
-            <Dropdown
-              style={styles.input}
-              data={categories}
-              onChange={item => setCategoryValue(item.value)}
-              labelField="label"
-              valueField="value"
-              placeholder="Select category"
-            />
-            {touched.title && <Text>{errors.category}</Text>}
+              <Dropdown
+                style={styles.input}
+                data={categories}
+                onChange={item => setFieldValue('category', item.value)}
+                labelField="label"
+                valueField="value"
+                placeholder="Select category"
+              />
+              <View style={styles.errorWrapper}>
+                {touched.category && errors.category && (
+                  <Text style={styles.errorMessage}>{errors.category}</Text>
+                )}
+              </View>
+            </View>
 
             <Button
               onPress={handleSubmit as (e?: GestureResponderEvent) => void}>
@@ -139,5 +158,13 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#de612b',
     borderWidth: 1,
+  },
+
+  errorWrapper: {
+    height: 20,
+  },
+
+  errorMessage: {
+    color: 'red',
   },
 });

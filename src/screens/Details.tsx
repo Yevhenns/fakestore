@@ -6,14 +6,14 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 //   price: number;
 // };
 
-export function Details({title = 'title', price = 450}) {
+export function Details({
+  title = 'title',
+  price = 450,
+  image = 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
+}) {
   return (
     <View style={styles.layout}>
-      <Image
-        source={{uri: 'https://placehold.co/600x400/orange'}}
-        width={200}
-        height={200}
-      />
+      <Image source={{uri: image}} width={200} height={200} />
       <Text>{title}</Text>
       <Text>Price: {price}</Text>
     </View>

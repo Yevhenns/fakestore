@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   GestureResponderEvent,
   StyleSheet,
@@ -10,10 +10,18 @@ import {Button} from '../components/Button';
 import {HomeScreenNavigationProp} from '../navigation/StackNavigation';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import {Dropdown} from 'react-native-element-dropdown';
 
 type AddProductProps = {
   navigation: HomeScreenNavigationProp;
 };
+
+const categories = [
+  {label: "men's clothing", value: "men's clothing"},
+  {label: 'jewelery', value: 'jewelery'},
+  {label: 'electronics', value: 'electronics'},
+  {label: "women's clothing", value: "women's clothing"},
+];
 
 const AddProductFormSchema = Yup.object().shape({
   title: Yup.string().max(100, 'Title is too long').required('Required'),
@@ -22,18 +30,20 @@ const AddProductFormSchema = Yup.object().shape({
 });
 
 export function AddProduct({navigation}: AddProductProps) {
+  const [categoryValue, setCategoryValue] = useState('');
+
   const submit = (data: {
     title: string;
     price: number;
     description: string;
   }) => {
     const newItem: ApiItem = {
-      id: 20,
+      id: 50,
       title: data.title,
       price: Number(data.price),
       description: data.description,
-      category: '',
-      image: '',
+      category: categoryValue,
+      image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
       rating: {rate: 0, count: 0},
     };
     console.log(newItem);
@@ -47,6 +57,7 @@ export function AddProduct({navigation}: AddProductProps) {
           title: '',
           price: '',
           description: '',
+          category: '',
         }}
         onSubmit={values => {
           const formattedValues = {
@@ -92,6 +103,16 @@ export function AddProduct({navigation}: AddProductProps) {
               onBlur={handleBlur('description')}
             />
             {touched.title && <Text>{errors.description}</Text>}
+
+            <Dropdown
+              style={styles.input}
+              data={categories}
+              onChange={item => setCategoryValue(item.value)}
+              labelField="label"
+              valueField="value"
+              placeholder="Select category"
+            />
+            {touched.title && <Text>{errors.category}</Text>}
 
             <Button
               onPress={handleSubmit as (e?: GestureResponderEvent) => void}>

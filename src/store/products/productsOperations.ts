@@ -1,7 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 
 export const getProducts = createAsyncThunk<
-  ApiItem[],
+  Product[],
   void,
   {
     rejectValue: string;

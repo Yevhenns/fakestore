@@ -1,17 +1,18 @@
-import {RouteProp, useRoute} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {useAppSelector} from '../store/hooks';
-import {getProductsAll} from '../store/products/productsSlice';
+
+import {RouteProp, useRoute} from '@react-navigation/native';
+
+import {AdditionalInfo} from '../components/AdditionalInfo';
 import {ListItem} from '../components/ListItem';
 import {RootStackParamList} from '../navigation/StackNavigation';
-import {AdditionalInfo} from '../components/AdditionalInfo';
+import {useAppSelector} from '../store/hooks';
+import {getProductsAll} from '../store/products/productsSlice';
 
 export function Details() {
   const productsAll = useAppSelector(getProductsAll);
 
   const route = useRoute<RouteProp<RootStackParamList, 'Details'>>();
-  console.log(route.params?.productId);
 
   const product = productsAll.find(item => item.id === route.params?.productId);
 

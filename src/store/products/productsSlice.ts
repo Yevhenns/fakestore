@@ -4,7 +4,7 @@ import {RootState} from '../store';
 import {getProducts} from './productsOperations';
 
 const initialState = {
-  productsAll: [] as ApiItem[],
+  productsAll: [] as Product[],
   error: null as any,
   isLoading: false,
 };
@@ -12,7 +12,11 @@ const initialState = {
 const productsSlice = createSlice({
   name: 'allProducts',
   initialState,
-  reducers: {},
+  reducers: {
+    addProduct(state, action: {payload: Product}) {
+      state.productsAll = [action.payload, ...state.productsAll];
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(getProducts.pending, state => {
@@ -43,3 +47,5 @@ export const getProductsAll = (state: RootState) =>
   state.allProducts.productsAll;
 export const getIsLoading = (state: RootState) => state.allProducts.isLoading;
 export const getError = (state: RootState) => state.allProducts.error;
+
+export const {addProduct} = productsSlice.actions;

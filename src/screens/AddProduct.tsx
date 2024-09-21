@@ -6,11 +6,15 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import {Button} from '../components/Button';
-import {HomeScreenNavigationProp} from '../navigation/StackNavigation';
+import {Dropdown} from 'react-native-element-dropdown';
+
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import {Dropdown} from 'react-native-element-dropdown';
+
+import {Button} from '../components/Button';
+import {HomeScreenNavigationProp} from '../navigation/StackNavigation';
+import {useAppDispatch} from '../store/hooks';
+import {addProduct} from '../store/products/productsSlice';
 
 type AddProductProps = {
   navigation: HomeScreenNavigationProp;
@@ -31,13 +35,15 @@ const AddProductFormSchema = Yup.object().shape({
 });
 
 export function AddProduct({navigation}: AddProductProps) {
+  const dispatch = useAppDispatch();
+
   const submit = (data: {
     title: string;
     price: number;
     description: string;
     category: string;
   }) => {
-    const newItem: ApiItem = {
+    const newItem: Product = {
       id: 50,
       title: data.title,
       price: Number(data.price),
@@ -46,6 +52,7 @@ export function AddProduct({navigation}: AddProductProps) {
       image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
       rating: {rate: 0, count: 0},
     };
+    dispatch(addProduct(newItem));
     console.log(newItem);
     navigation.navigate('Home');
   };

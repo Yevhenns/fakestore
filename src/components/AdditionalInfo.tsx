@@ -1,8 +1,9 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+
 import {Paragraph} from './Paragraph';
 
-type AdditionalInfoProps = {item: ApiItem};
+type AdditionalInfoProps = {item: Product};
 
 export function AdditionalInfo({item}: AdditionalInfoProps) {
   return (

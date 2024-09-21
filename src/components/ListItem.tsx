@@ -1,8 +1,9 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
+
 import {Paragraph} from './Paragraph';
 
-type ListItemProps = {item: ApiItem};
+type ListItemProps = {item: Product};
 
 export function ListItem({item}: ListItemProps) {
   return (

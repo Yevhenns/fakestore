@@ -1,9 +1,11 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {Home} from '../screens/Home';
-import {Details} from '../screens/Details';
 import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/native-stack/types';
+
+import {createStackNavigator} from '@react-navigation/stack';
+
 import {AddProduct} from '../screens/AddProduct';
+import {Details} from '../screens/Details';
+import {Home} from '../screens/Home';
 
 const Stack = createStackNavigator();
 

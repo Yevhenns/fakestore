@@ -6,17 +6,18 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+
 import {Button} from '../components/Button';
-import {AddProductScreenNavigationProp} from '../navigation/StackNavigation';
 import {ListItem} from '../components/ListItem';
+import {Paragraph} from '../components/Paragraph';
+import {AddProductScreenNavigationProp} from '../navigation/StackNavigation';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
+import {getProducts} from '../store/products/productsOperations';
 import {
   getError,
   getIsLoading,
   getProductsAll,
 } from '../store/products/productsSlice';
-import {getProducts} from '../store/products/productsOperations';
-import {Paragraph} from '../components/Paragraph';
 
 type HomeProps = {
   navigation: AddProductScreenNavigationProp;

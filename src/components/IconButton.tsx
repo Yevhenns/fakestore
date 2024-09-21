@@ -2,14 +2,11 @@ import React from 'react';
 import {TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import {StyleSheet} from 'react-native';
 
-type ButtonProps = {
-  onPress: () => void;
-  disabled?: boolean;
-} & TouchableOpacityProps;
+type ButtonProps = TouchableOpacityProps;
 
-export function IconButton({children, onPress, ...props}: ButtonProps) {
+export function IconButton({children, ...props}: ButtonProps) {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress} {...props}>
+    <TouchableOpacity style={styles.button} {...props}>
       {children}
     </TouchableOpacity>
   );

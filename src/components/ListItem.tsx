@@ -14,42 +14,38 @@ import {HeartFilled} from './icons/HeartFilled';
 
 type ListItemProps = {
   item: Product;
-  // checkIsFavoriteProducts: (id: number | string) => boolean;
 };
 
-export const ListItem = React.memo(
-  ({
-    item,
-  }: // checkIsFavoriteProducts
-  ListItemProps) => {
-    const [isFavorite, setIsFavorite] = useState(false);
+export const ListItem = React.memo(({item}: ListItemProps) => {
+  const [isFavorite, setIsFavorite] = useState(false);
 
-    const favoriteProducts = useAppSelector(getFavoriteProducts);
+  const favoriteProducts = useAppSelector(getFavoriteProducts);
 
-    const checkIsFavoriteProducts = useCallback(
-      (id: number | string) => {
-        return favoriteProducts.some(product => product.id === id);
-      },
-      [favoriteProducts],
-    );
+  const dispatch = useAppDispatch();
 
-    const dispatch = useAppDispatch();
+  const checkIsFavoriteProducts = useCallback(
+    (id: number | string) => {
+      return favoriteProducts.some(product => product.id === id);
+    },
+    [favoriteProducts],
+  );
 
-    const addToFavorite = () => {
-      if (favoriteProducts.some(product => product.id === item.id)) {
-        setIsFavorite(false);
-        dispatch(removeFromFavoriteAction(item.id));
-      } else {
-        setIsFavorite(true);
-        dispatch(addToFavoriteAction(item));
-      }
-    };
+  const addToFavorite = () => {
+    if (favoriteProducts.some(product => product.id === item.id)) {
+      setIsFavorite(false);
+      dispatch(removeFromFavoriteAction(item.id));
+    } else {
+      setIsFavorite(true);
+      dispatch(addToFavoriteAction(item));
+    }
+  };
 
-    useEffect(() => {
-      setIsFavorite(checkIsFavoriteProducts(item.id));
-    }, [checkIsFavoriteProducts, item.id]);
+  useEffect(() => {
+    setIsFavorite(checkIsFavoriteProducts(item.id));
+  }, [checkIsFavoriteProducts, item.id]);
 
-    return (
+  return (
+    <View>
       <View style={styles.layout}>
         <Image
           source={{uri: item.image}}
@@ -71,16 +67,17 @@ export const ListItem = React.memo(
           </IconButton>
         </View>
       </View>
-    );
-  },
-);
+    </View>
+  );
+});
 
 const styles = StyleSheet.create({
   layout: {
-    display: 'flex',
+    padding: 10,
     flexDirection: 'row',
     gap: 10,
     backgroundColor: '#F0F2F8',
+    overflow: 'hidden',
   },
 
   textWrapper: {
@@ -89,5 +86,8 @@ const styles = StyleSheet.create({
 
   buttonWrapper: {
     marginLeft: 'auto',
+    width: 32,
+    height: 32,
+    alignItems: 'center',
   },
 });

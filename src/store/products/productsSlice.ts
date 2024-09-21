@@ -22,6 +22,12 @@ const productsSlice = createSlice({
         item => item.id !== action.payload,
       );
       state.productsAll = filteredArr;
+      if (state.favoriteProducts.some(item => item.id === action.payload)) {
+        const filteredFavoriteArr = state.favoriteProducts.filter(
+          item => item.id !== action.payload,
+        );
+        state.favoriteProducts = filteredFavoriteArr;
+      }
     },
     addToFavoriteAction(state, action: {payload: Product}) {
       state.favoriteProducts = [...state.favoriteProducts, action.payload];

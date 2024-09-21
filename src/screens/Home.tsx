@@ -4,6 +4,7 @@ import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {ModalComponent} from '../components/ModalComponent';
 import {Paragraph} from '../components/Paragraph';
 import {ProductList} from '../components/ProductList';
+import {useModalToggle} from '../hooks/useModalToggle';
 import {DetailsScreenNavigationProp} from '../navigation/StackNavigation';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {getProducts} from '../store/products/productsOperations';
@@ -18,7 +19,6 @@ type HomeProps = {
 };
 
 export function Home({navigation}: HomeProps) {
-  const [modalVisible, setModalVisible] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<
     number | string | null
   >(null);
@@ -29,9 +29,7 @@ export function Home({navigation}: HomeProps) {
   const isLoading = useAppSelector(getIsLoading);
   const isError = useAppSelector(getError);
 
-  const modalToggle = () => {
-    setModalVisible(!modalVisible);
-  };
+  const {modalToggle, modalVisible} = useModalToggle();
 
   const setSelectedProductIdHandler = (id: number | string) => {
     setSelectedProductId(id);

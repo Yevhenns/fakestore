@@ -42,10 +42,7 @@ export function ProductList({
             setSelectedProductIdHandler(item.id);
             modalToggle();
           }}>
-          <ListItem
-            item={item}
-            // checkIsFavoriteProducts={checkIsFavoriteProducts}
-          />
+          <ListItem item={item} />
         </TouchableOpacity>
       )}
       keyExtractor={item => item.id.toString()}
@@ -60,7 +57,6 @@ const styles = StyleSheet.create({
   },
 
   listItem: {
-    flex: 1,
     borderWidth: 2,
     borderRadius: 20,
     overflow: 'hidden',

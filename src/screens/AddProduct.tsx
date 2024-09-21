@@ -60,12 +60,13 @@ export function AddProduct({navigation}: AddProductProps) {
           description: '',
           category: '',
         }}
-        onSubmit={values => {
+        onSubmit={(values, {resetForm}) => {
           const formattedValues = {
             ...values,
             price: values.price ? Number(values.price) : 0,
           };
           submit(formattedValues);
+          resetForm();
         }}
         validationSchema={AddProductFormSchema}>
         {({

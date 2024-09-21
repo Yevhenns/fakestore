@@ -4,6 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import {ModalComponent} from '../components/ModalComponent';
 import {Paragraph} from '../components/Paragraph';
 import {ProductList} from '../components/ProductList';
+import {useModalToggle} from '../hooks/useModalToggle';
 import {DetailsScreenNavigationProp} from '../navigation/StackNavigation';
 import {useAppSelector} from '../store/hooks';
 import {getFavoriteProducts} from '../store/products/productsSlice';
@@ -13,16 +14,12 @@ type FavoritesProps = {
 };
 
 export function Favorites({navigation}: FavoritesProps) {
-  const [modalVisible, setModalVisible] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<
     number | string | null
   >(null);
 
   const favoriteProducts = useAppSelector(getFavoriteProducts);
-
-  const modalToggle = () => {
-    setModalVisible(!modalVisible);
-  };
+  const {modalToggle, modalVisible} = useModalToggle();
 
   const setSelectedProductIdHandler = (id: number | string) => {
     setSelectedProductId(id);

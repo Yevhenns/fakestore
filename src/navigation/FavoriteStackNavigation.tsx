@@ -4,18 +4,18 @@ import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/nat
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {Details} from '../screens/Details';
-import {Home} from '../screens/Home';
+import {Favorites} from '../screens/Favorites';
 
 const Stack = createStackNavigator();
 
 export type RootStackParamList = {
-  Home: undefined;
+  Favorites: undefined;
   Details: {productId: number | string};
 };
 
-export type HomeScreenNavigationProp = NativeStackNavigationProp<
+export type FavoriteScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'Home'
+  'Favorites'
 >;
 
 export type DetailsScreenNavigationProp = NativeStackNavigationProp<
@@ -23,16 +23,16 @@ export type DetailsScreenNavigationProp = NativeStackNavigationProp<
   'Details'
 >;
 
-export function StackNavigation() {
+export function FavoriteStackNavigation() {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Favorites"
       screenOptions={{
         headerMode: 'screen',
       }}>
       <Stack.Screen
         name="Home"
-        component={Home}
+        component={Favorites}
         options={{
           title: 'Product list',
         }}

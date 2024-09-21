@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {ListItem} from '../components/ListItem';
-import {DetailsScreenNavigationProp} from '../navigation/StackNavigation';
+import {DetailsScreenNavigationProp} from '../navigation/HomeStackNavigation';
 import {useAppDispatch} from '../store/hooks';
 import {getProducts} from '../store/products/productsOperations';
 

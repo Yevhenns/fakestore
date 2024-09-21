@@ -6,7 +6,7 @@ import {Paragraph} from '../components/Paragraph';
 import {ProductList} from '../components/ProductList';
 import {useModalToggle} from '../hooks/useModalToggle';
 import {useSelectedProduct} from '../hooks/useSelectedProduct';
-import {DetailsScreenNavigationProp} from '../navigation/StackNavigation';
+import {DetailsScreenNavigationProp} from '../navigation/HomeStackNavigation';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {getProducts} from '../store/products/productsOperations';
 import {

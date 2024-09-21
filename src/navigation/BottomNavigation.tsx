@@ -7,10 +7,10 @@ import {Heart} from '../components/icons/Heart';
 import {Home} from '../components/icons/Home';
 import {Plus} from '../components/icons/Plus';
 import {AddProduct} from '../screens/AddProduct';
-import {Favorites} from '../screens/Favorites';
 import {useAppSelector} from '../store/hooks';
 import {getFavoriteProducts} from '../store/products/productsSlice';
-import {StackNavigation} from './StackNavigation';
+import {FavoriteStackNavigation} from './FavoriteStackNavigation';
+import {HomeStackNavigation} from './HomeStackNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +32,7 @@ export function BottomNavigation() {
             headerShown: false,
           }}
           name="HomeScreen"
-          component={StackNavigation}
+          component={HomeStackNavigation}
         />
 
         <Tab.Screen
@@ -47,9 +47,10 @@ export function BottomNavigation() {
           options={{
             tabBarIcon: ({color}) => <Heart color={color} />,
             tabBarBadge: favoriteLength,
+            headerShown: false,
           }}
           name="Favorites"
-          component={Favorites}
+          component={FavoriteStackNavigation}
         />
       </Tab.Navigator>
     </>

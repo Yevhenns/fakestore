@@ -14,7 +14,7 @@ import * as Yup from 'yup';
 
 import {categories} from '../assets/categories';
 import {Button} from '../components/Button';
-import {HomeScreenNavigationProp} from '../navigation/StackNavigation';
+import {HomeScreenNavigationProp} from '../navigation/HomeStackNavigation';
 import {useAppDispatch} from '../store/hooks';
 import {addProduct} from '../store/products/productsSlice';
 

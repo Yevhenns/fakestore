@@ -1,10 +1,19 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 export function AddItem() {
   return (
-    <View>
+    <View style={styles.layout}>
       <Text>AddItem</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  layout: {
+    flex: 1,
+    padding: 10,
+    gap: 10,
+    backgroundColor: '#DACAB0',
+  },
+});

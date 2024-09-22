@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 
 import {RouteProp, useRoute} from '@react-navigation/native';
 
@@ -18,14 +19,14 @@ export function Details() {
   const product = productsAll.find(item => item.id === route.params?.productId);
 
   return (
-    <View style={styles.layout}>
+    <ScrollView style={styles.layout}>
       {product && (
         <>
           <ListItem item={product} />
           <AdditionalInfo item={product} />
         </>
       )}
-    </View>
+    </ScrollView>
   );
 }
 

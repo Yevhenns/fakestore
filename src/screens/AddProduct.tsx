@@ -1,6 +1,7 @@
 import React from 'react';
 import {GestureResponderEvent, StyleSheet, TextInput, View} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
+import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
 import uuid from 'react-native-uuid';
 
 import {Formik} from 'formik';
@@ -41,106 +42,97 @@ export function AddProduct({navigation}: AddProductProps) {
   };
 
   return (
-    <View style={styles.layout}>
-      <Formik
-        initialValues={{
-          title: '',
-          price: '',
-          description: '',
-          category: '',
-        }}
-        onSubmit={(values, {resetForm}) => {
-          const formattedValues = {
-            ...values,
-            price: values.price ? Number(values.price) : 0,
-          };
-          submit(formattedValues);
-          resetForm();
-        }}
-        validationSchema={AddProductFormSchema}>
-        {({
-          handleChange,
-          handleSubmit,
-          setFieldValue,
-          values,
-          errors,
-          touched,
-        }) => (
-          <>
-            <View>
-              <Paragraph>Title</Paragraph>
-              <TextInput
-                style={styles.input}
-                placeholder="Title"
-                value={values.title}
-                onChangeText={handleChange('title')}
-                placeholderTextColor={'grey'}
-              />
-              <View style={styles.errorWrapper}>
-                {touched.title && errors.title && (
-                  <Paragraph error>{errors.title}</Paragraph>
-                )}
+    <GestureHandlerRootView style={styles.layout}>
+      <ScrollView>
+        <Formik
+          initialValues={{
+            title: '',
+            price: '',
+            description: '',
+            category: '',
+          }}
+          onSubmit={(values, {resetForm}) => {
+            const formattedValues = {
+              ...values,
+              price: values.price ? Number(values.price) : 0,
+            };
+            submit(formattedValues);
+            resetForm();
+          }}
+          validationSchema={AddProductFormSchema}>
+          {({handleChange, handleSubmit, setFieldValue, values, errors}) => (
+            <>
+              <View>
+                <Paragraph>Title</Paragraph>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Title"
+                  value={values.title}
+                  onChangeText={handleChange('title')}
+                  placeholderTextColor={'grey'}
+                />
+                <View style={styles.errorWrapper}>
+                  {errors.title && <Paragraph error>{errors.title}</Paragraph>}
+                </View>
+
+                <Paragraph>Price</Paragraph>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Price"
+                  value={values.price.toString()}
+                  onChangeText={handleChange('price')}
+                  keyboardType="phone-pad"
+                  placeholderTextColor={'grey'}
+                />
+                <View style={styles.errorWrapper}>
+                  {errors.price && <Paragraph error>{errors.price}</Paragraph>}
+                </View>
+
+                <Paragraph>Description</Paragraph>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Description"
+                  value={values.description}
+                  onChangeText={handleChange('description')}
+                  placeholderTextColor={'grey'}
+                  numberOfLines={5}
+                  textAlignVertical="top"
+                />
+                <View style={styles.errorWrapper}>
+                  {errors.description && (
+                    <Paragraph error>{errors.description}</Paragraph>
+                  )}
+                </View>
+
+                <Paragraph>Category</Paragraph>
+                <Dropdown
+                  style={styles.input}
+                  data={categories}
+                  onChange={item => setFieldValue('category', item.value)}
+                  labelField="label"
+                  valueField="value"
+                  value={values.category}
+                  placeholder="Select category"
+                  placeholderStyle={styles.dropdownPlaceholderStyle}
+                  itemTextStyle={styles.dropdownTextStyle}
+                  selectedTextStyle={styles.dropdownTextStyle}
+                />
+                <View style={styles.errorWrapper}>
+                  {errors.category && (
+                    <Paragraph error>{errors.category}</Paragraph>
+                  )}
+                </View>
               </View>
 
-              <Paragraph>Price</Paragraph>
-              <TextInput
-                style={styles.input}
-                placeholder="Price"
-                value={values.price.toString()}
-                onChangeText={handleChange('price')}
-                keyboardType="phone-pad"
-                placeholderTextColor={'grey'}
-              />
-              <View style={styles.errorWrapper}>
-                {touched.price && errors.price && (
-                  <Paragraph error>{errors.price}</Paragraph>
-                )}
-              </View>
-
-              <Paragraph>Description</Paragraph>
-              <TextInput
-                style={styles.input}
-                placeholder="Description"
-                value={values.description}
-                onChangeText={handleChange('description')}
-                placeholderTextColor={'grey'}
-                numberOfLines={5}
-                textAlignVertical="top"
-              />
-              <View style={styles.errorWrapper}>
-                {touched.description && errors.description && (
-                  <Paragraph error>{errors.description}</Paragraph>
-                )}
-              </View>
-
-              <Paragraph>Category</Paragraph>
-              <Dropdown
-                style={styles.input}
-                data={categories}
-                onChange={item => setFieldValue('category', item.value)}
-                labelField="label"
-                valueField="value"
-                value={values.category}
-                placeholder="Select category"
-                placeholderStyle={styles.dropdownPlaceholderStyle}
-                itemTextStyle={styles.dropdownTextStyle}
-                selectedTextStyle={styles.dropdownTextStyle}
-              />
-              <View style={styles.errorWrapper}>
-                {touched.category && errors.category && (
-                  <Paragraph error>{errors.category}</Paragraph>
-                )}
-              </View>
-            </View>
-
-            <Button
-              onPress={handleSubmit as (e?: GestureResponderEvent) => void}>
-              Add product
-            </Button>
-          </>
-        )}
-      </Formik>
-    </View>
+              <Button
+                onPress={handleSubmit as (e?: GestureResponderEvent) => void}>
+                Add product
+              </Button>
+            </>
+          )}
+        </Formik>
+      </ScrollView>
+    </GestureHandlerRootView>
   );
 }
 

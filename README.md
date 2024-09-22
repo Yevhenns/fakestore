@@ -5,11 +5,11 @@ A fakestore mobile application.
 ## Installation
 
 ```bash
-npm i
+yarn
 ```
 
 ```bash
-npm start
+yarn start
 ```
 
 ## Build APK

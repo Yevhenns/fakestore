@@ -2,8 +2,8 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
 import {colors} from '../assets/styleVariables';
+import {Empty} from '../components/Empty';
 import {ModalComponent} from '../components/ModalComponent';
-import {Paragraph} from '../components/Paragraph';
 import {ProductList} from '../components/ProductList';
 import {useModalToggle} from '../hooks/useModalToggle';
 import {useSelectedProduct} from '../hooks/useSelectedProduct';
@@ -25,9 +25,7 @@ export function Favorites({navigation}: FavoritesProps) {
   return (
     <View style={styles.layout}>
       {favoriteProducts.length === 0 ? (
-        <View style={styles.emptyContainer}>
-          <Paragraph>Empty</Paragraph>
-        </View>
+        <Empty />
       ) : (
         <>
           <ProductList

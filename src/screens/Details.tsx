@@ -7,6 +7,7 @@ import {RouteProp, useRoute} from '@react-navigation/native';
 import {colors} from '../assets/styleVariables';
 import {AdditionalInfo} from '../components/AdditionalInfo';
 import {Button} from '../components/Button';
+import {Empty} from '../components/Empty';
 import {ListItem} from '../components/ListItem';
 import {ModalComponent} from '../components/ModalComponent';
 import {useModalToggle} from '../hooks/useModalToggle';
@@ -25,29 +26,32 @@ export function Details() {
   const {modalToggle, modalVisible} = useModalToggle();
 
   const {selectedProductId, setSelectedProductIdHandler} = useSelectedProduct();
+  console.log(product);
+
+  if (!product) {
+    return <Empty />;
+  }
 
   return (
     <ScrollView style={styles.layout}>
-      {product && (
-        <View style={styles.wrapper}>
-          <ListItem item={product} />
-          <AdditionalInfo item={product} />
-          <Button
-            onPress={() => {
-              setSelectedProductIdHandler(product.id);
-              modalToggle();
-            }}>
-            Delete
-          </Button>
-          {selectedProductId !== null && (
-            <ModalComponent
-              modalVisible={modalVisible}
-              modalToggle={modalToggle}
-              selectedProductId={selectedProductId}
-            />
-          )}
-        </View>
-      )}
+      <View style={styles.wrapper}>
+        <ListItem item={product} />
+        <AdditionalInfo item={product} />
+        <Button
+          onPress={() => {
+            setSelectedProductIdHandler(product.id);
+            modalToggle();
+          }}>
+          Delete
+        </Button>
+        {selectedProductId !== null && (
+          <ModalComponent
+            modalVisible={modalVisible}
+            modalToggle={modalToggle}
+            selectedProductId={selectedProductId}
+          />
+        )}
+      </View>
     </ScrollView>
   );
 }

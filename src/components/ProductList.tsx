@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 
+import {colors} from '../assets/colors';
 import {ListItem} from '../components/ListItem';
 import {DetailsScreenNavigationProp} from '../navigation/HomeStackNavigation';
 import {useAppDispatch} from '../store/hooks';
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   listItem: {
     borderRadius: 20,
     overflow: 'hidden',
-    shadowColor: '#171717',
+    shadowColor: colors.shadowColor,
     elevation: 5,
   },
 });

@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 
 import {RouteProp, useRoute} from '@react-navigation/native';
 
+import {colors} from '../assets/colors';
 import {AdditionalInfo} from '../components/AdditionalInfo';
 import {ListItem} from '../components/ListItem';
 import {RootStackParamList} from '../navigation/HomeStackNavigation';
@@ -32,6 +33,6 @@ const styles = StyleSheet.create({
   layout: {
     flex: 1,
     padding: 10,
-    backgroundColor: '#F0F2F8',
+    backgroundColor: colors.mainBackgroundColor,
   },
 });

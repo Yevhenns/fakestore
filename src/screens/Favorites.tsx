@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
+import {colors} from '../assets/colors';
 import {ModalComponent} from '../components/ModalComponent';
 import {Paragraph} from '../components/Paragraph';
 import {ProductList} from '../components/ProductList';
@@ -49,6 +50,6 @@ export function Favorites({navigation}: FavoritesProps) {
 const styles = StyleSheet.create({
   layout: {
     flex: 1,
-    backgroundColor: '#F0F2F8',
+    backgroundColor: colors.mainBackgroundColor,
   },
 });

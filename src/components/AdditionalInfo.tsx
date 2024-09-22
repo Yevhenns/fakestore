@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
+import {colors} from '../assets/colors';
 import {Paragraph} from './Paragraph';
 
 type AdditionalInfoProps = {item: Product};
@@ -22,6 +23,6 @@ const styles = StyleSheet.create({
   layout: {
     display: 'flex',
     gap: 10,
-    backgroundColor: '#F0F2F8',
+    backgroundColor: colors.mainBackgroundColor,
   },
 });

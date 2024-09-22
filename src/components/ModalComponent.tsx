@@ -1,6 +1,7 @@
 import React from 'react';
 import {Modal, StyleSheet, View} from 'react-native';
 
+import {colors} from '../assets/colors';
 import {useAppDispatch} from '../store/hooks';
 import {deleteProduct} from '../store/products/productsSlice';
 import {Button} from './Button';
@@ -55,17 +56,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    backgroundColor: colors.modalBackgroundColor,
   },
 
   modalWrapper: {
-    backgroundColor: 'white',
+    backgroundColor: colors.whiteColor,
     padding: 20,
     alignItems: 'center',
     gap: 10,
     borderWidth: 2,
     borderRadius: 20,
-    borderColor: '#de612b',
+    borderColor: colors.accentColor,
   },
 
   buttonsSet: {

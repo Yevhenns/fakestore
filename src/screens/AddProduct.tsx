@@ -7,6 +7,7 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 
 import {categories} from '../assets/categories';
+import {colors} from '../assets/colors';
 import {Button} from '../components/Button';
 import {Paragraph} from '../components/Paragraph';
 import {HomeScreenNavigationProp} from '../navigation/HomeStackNavigation';
@@ -156,26 +157,26 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     gap: 10,
-    backgroundColor: '#F0F2F8',
+    backgroundColor: colors.mainBackgroundColor,
   },
 
   input: {
     width: '100%',
     padding: 12,
     borderRadius: 5,
-    borderColor: '#de612b',
+    borderColor: colors.accentColor,
     borderWidth: 2,
-    color: 'black',
+    color: colors.blackColor,
     fontSize: 18,
   },
 
   dropdownPlaceholderStyle: {
-    color: 'grey',
+    color: colors.greyColor,
     fontSize: 18,
   },
 
   dropdownTextStyle: {
-    color: 'black',
+    color: colors.blackColor,
     fontSize: 18,
   },
 

@@ -2,6 +2,8 @@ import React from 'react';
 import {Text, TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import {StyleSheet} from 'react-native';
 
+import {colors} from '../assets/colors';
+
 type ButtonProps = TouchableOpacityProps;
 
 export function Button({children, ...props}: ButtonProps) {
@@ -14,18 +16,17 @@ export function Button({children, ...props}: ButtonProps) {
 
 const styles = StyleSheet.create({
   button: {
-    height: 38,
-    paddingHorizontal: 24,
+    height: 40,
     alignItems: 'center',
     borderRadius: 12,
-    backgroundColor: '#de612b',
-    fontSize: 18,
+    paddingHorizontal: 24,
+    backgroundColor: colors.accentColor,
     display: 'flex',
     justifyContent: 'center',
   },
   buttonText: {
-    color: 'white',
-    fontSize: 18,
-    fontFamily: 'Comfortaa-Bold',
+    color: colors.whiteColor,
+    fontSize: 24,
+    fontFamily: 'SofadiOne-Regular',
   },
 });

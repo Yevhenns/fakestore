@@ -29,6 +29,9 @@ export function FavoriteStackNavigation() {
       initialRouteName="Favorites"
       screenOptions={{
         headerMode: 'screen',
+        headerTitleStyle: {
+          fontFamily: 'SofadiOne-Regular',
+        },
       }}>
       <Stack.Screen
         name="Home"

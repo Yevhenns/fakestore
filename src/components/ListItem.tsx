@@ -1,6 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 
+import {colors} from '../assets/colors';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {
   addToFavoriteAction,
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     gap: 10,
-    backgroundColor: '#F0F2F8',
+    backgroundColor: colors.mainBackgroundColor,
     overflow: 'hidden',
   },
 
@@ -86,8 +87,8 @@ const styles = StyleSheet.create({
 
   buttonWrapper: {
     marginLeft: 'auto',
-    width: 32,
-    height: 32,
+    width: 40,
+    height: 40,
     alignItems: 'center',
   },
 });

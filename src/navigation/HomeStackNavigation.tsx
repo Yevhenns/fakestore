@@ -29,6 +29,9 @@ export function HomeStackNavigation() {
       initialRouteName="Home"
       screenOptions={{
         headerMode: 'screen',
+        headerTitleStyle: {
+          fontFamily: 'SofadiOne-Regular',
+        },
       }}>
       <Stack.Screen
         name="Home"

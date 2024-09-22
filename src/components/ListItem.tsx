@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
+import Toast from 'react-native-toast-message';
 
 import {colors} from '../assets/styleVariables';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
@@ -35,9 +36,19 @@ export const ListItem = React.memo(({item}: ListItemProps) => {
     if (favoriteProducts.some(product => product.id === item.id)) {
       setIsFavorite(false);
       dispatch(removeFromFavoriteAction(item.id));
+      Toast.show({
+        type: 'info',
+        text1: 'Removed from favorites',
+        visibilityTime: 1500,
+      });
     } else {
       setIsFavorite(true);
       dispatch(addToFavoriteAction(item));
+      Toast.show({
+        type: 'success',
+        text1: 'Added to favorites',
+        visibilityTime: 1500,
+      });
     }
   };
 

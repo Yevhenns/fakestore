@@ -1,5 +1,6 @@
 import React from 'react';
 import {Modal, StyleSheet, View} from 'react-native';
+import Toast from 'react-native-toast-message';
 
 import {colors} from '../assets/styleVariables';
 import {useAppDispatch} from '../store/hooks';
@@ -23,6 +24,11 @@ export function ModalComponent({
   const deleteProductHandler = (id: number | string) => {
     dispatch(deleteProduct(id));
     modalToggle();
+    Toast.show({
+      type: 'error',
+      text1: 'Product deleted',
+      visibilityTime: 1500,
+    });
   };
 
   return (

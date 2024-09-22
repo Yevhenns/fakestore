@@ -1,4 +1,5 @@
 import React from 'react';
+import Toast from 'react-native-toast-message';
 import {Provider} from 'react-redux';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -13,6 +14,7 @@ function App() {
       <PersistGate loading={null} persistor={persist}>
         <NavigationContainer>
           <BottomNavigation />
+          <Toast />
         </NavigationContainer>
       </PersistGate>
     </Provider>

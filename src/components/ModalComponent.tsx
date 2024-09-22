@@ -61,9 +61,9 @@ const styles = StyleSheet.create({
 
   modalWrapper: {
     backgroundColor: colors.whiteColor,
-    padding: 20,
+    padding: 40,
     alignItems: 'center',
-    gap: 10,
+    gap: 20,
     borderWidth: 2,
     borderRadius: 20,
     borderColor: colors.accentColor,
@@ -72,6 +72,6 @@ const styles = StyleSheet.create({
   buttonsSet: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 10,
+    gap: 40,
   },
 });

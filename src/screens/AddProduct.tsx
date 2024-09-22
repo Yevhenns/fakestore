@@ -4,26 +4,19 @@ import {Dropdown} from 'react-native-element-dropdown';
 import uuid from 'react-native-uuid';
 
 import {Formik} from 'formik';
-import * as Yup from 'yup';
 
 import {categories} from '../assets/categories';
 import {colors, fonts} from '../assets/styleVariables';
 import {Button} from '../components/Button';
 import {Paragraph} from '../components/Paragraph';
 import {HomeScreenNavigationProp} from '../navigation/HomeStackNavigation';
+import {AddProductFormSchema} from '../schemas/AddProductFormSchema';
 import {useAppDispatch} from '../store/hooks';
 import {addProduct} from '../store/products/productsSlice';
 
 type AddProductProps = {
   navigation: HomeScreenNavigationProp;
 };
-
-const AddProductFormSchema = Yup.object().shape({
-  title: Yup.string().max(100, 'Title is too long').required('Required'),
-  price: Yup.number().min(1, 'Min 1 number').required('Required'),
-  description: Yup.string().required('Required'),
-  category: Yup.string().required('Required'),
-});
 
 export function AddProduct({navigation}: AddProductProps) {
   const dispatch = useAppDispatch();
@@ -36,9 +29,9 @@ export function AddProduct({navigation}: AddProductProps) {
   }) => {
     const newItem: Product = {
       id: uuid.v4() as string,
-      title: data.title,
+      title: data.title.trim(),
       price: Number(data.price),
-      description: data.description,
+      description: data.description.trim(),
       category: data.category,
       image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg',
       rating: {rate: 0, count: 0},
@@ -115,6 +108,8 @@ export function AddProduct({navigation}: AddProductProps) {
                 onChangeText={handleChange('description')}
                 onBlur={handleBlur('description')}
                 placeholderTextColor={'grey'}
+                numberOfLines={5}
+                textAlignVertical="top"
               />
               <View style={styles.errorWrapper}>
                 {touched.description && errors.description && (
@@ -129,6 +124,7 @@ export function AddProduct({navigation}: AddProductProps) {
                 onChange={item => setFieldValue('category', item.value)}
                 labelField="label"
                 valueField="value"
+                value={values.category}
                 placeholder="Select category"
                 placeholderStyle={styles.dropdownPlaceholderStyle}
                 itemTextStyle={styles.dropdownTextStyle}

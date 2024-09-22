@@ -34,7 +34,7 @@ export function FavoriteStackNavigation() {
         name="Home"
         component={Favorites}
         options={{
-          title: 'Product list',
+          title: 'Favorite list',
         }}
       />
       <Stack.Screen

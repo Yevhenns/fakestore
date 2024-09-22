@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  GestureResponderEvent,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {GestureResponderEvent, StyleSheet, TextInput, View} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import uuid from 'react-native-uuid';
 
@@ -14,6 +8,7 @@ import * as Yup from 'yup';
 
 import {categories} from '../assets/categories';
 import {Button} from '../components/Button';
+import {Paragraph} from '../components/Paragraph';
 import {HomeScreenNavigationProp} from '../navigation/HomeStackNavigation';
 import {useAppDispatch} from '../store/hooks';
 import {addProduct} from '../store/products/productsSlice';
@@ -80,19 +75,22 @@ export function AddProduct({navigation}: AddProductProps) {
         }) => (
           <>
             <View>
+              <Paragraph>Title</Paragraph>
               <TextInput
                 style={styles.input}
                 placeholder="Title"
                 value={values.title}
                 onChangeText={handleChange('title')}
                 onBlur={handleBlur('title')}
+                placeholderTextColor={'grey'}
               />
               <View style={styles.errorWrapper}>
                 {touched.title && errors.title && (
-                  <Text style={styles.errorMessage}>{errors.title}</Text>
+                  <Paragraph error>{errors.title}</Paragraph>
                 )}
               </View>
 
+              <Paragraph>Price</Paragraph>
               <TextInput
                 style={styles.input}
                 placeholder="Price"
@@ -100,26 +98,30 @@ export function AddProduct({navigation}: AddProductProps) {
                 onChangeText={handleChange('price')}
                 onBlur={handleBlur('price')}
                 keyboardType="phone-pad"
+                placeholderTextColor={'grey'}
               />
               <View style={styles.errorWrapper}>
                 {touched.price && errors.price && (
-                  <Text style={styles.errorMessage}>{errors.price}</Text>
+                  <Paragraph error>{errors.price}</Paragraph>
                 )}
               </View>
 
+              <Paragraph>Description</Paragraph>
               <TextInput
                 style={styles.input}
                 placeholder="Description"
                 value={values.description}
                 onChangeText={handleChange('description')}
                 onBlur={handleBlur('description')}
+                placeholderTextColor={'grey'}
               />
               <View style={styles.errorWrapper}>
                 {touched.description && errors.description && (
-                  <Text style={styles.errorMessage}>{errors.description}</Text>
+                  <Paragraph error>{errors.description}</Paragraph>
                 )}
               </View>
 
+              <Paragraph>Category</Paragraph>
               <Dropdown
                 style={styles.input}
                 data={categories}
@@ -127,10 +129,13 @@ export function AddProduct({navigation}: AddProductProps) {
                 labelField="label"
                 valueField="value"
                 placeholder="Select category"
+                placeholderStyle={styles.dropdownPlaceholderStyle}
+                itemTextStyle={styles.dropdownTextStyle}
+                selectedTextStyle={styles.dropdownTextStyle}
               />
               <View style={styles.errorWrapper}>
                 {touched.category && errors.category && (
-                  <Text style={styles.errorMessage}>{errors.category}</Text>
+                  <Paragraph error>{errors.category}</Paragraph>
                 )}
               </View>
             </View>
@@ -151,7 +156,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     gap: 10,
-    backgroundColor: '#DACAB0',
+    backgroundColor: '#F0F2F8',
   },
 
   input: {
@@ -159,14 +164,22 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 5,
     borderColor: '#de612b',
-    borderWidth: 1,
+    borderWidth: 2,
+    color: 'black',
+    fontSize: 18,
+  },
+
+  dropdownPlaceholderStyle: {
+    color: 'grey',
+    fontSize: 18,
+  },
+
+  dropdownTextStyle: {
+    color: 'black',
+    fontSize: 18,
   },
 
   errorWrapper: {
     height: 20,
-  },
-
-  errorMessage: {
-    color: 'red',
   },
 });

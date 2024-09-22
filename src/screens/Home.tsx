@@ -66,8 +66,6 @@ export function Home({navigation}: HomeProps) {
 const styles = StyleSheet.create({
   layout: {
     flex: 1,
-    padding: 10,
-    gap: 10,
-    backgroundColor: '#DACAB0',
+    backgroundColor: '#F0F2F8',
   },
 });

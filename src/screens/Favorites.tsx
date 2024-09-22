@@ -49,7 +49,6 @@ export function Favorites({navigation}: FavoritesProps) {
 const styles = StyleSheet.create({
   layout: {
     flex: 1,
-    padding: 10,
     backgroundColor: '#F0F2F8',
   },
 });

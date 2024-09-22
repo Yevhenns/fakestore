@@ -54,12 +54,13 @@ export function ProductList({
 const styles = StyleSheet.create({
   list: {
     gap: 10,
+    padding: 10,
   },
 
   listItem: {
-    borderWidth: 2,
     borderRadius: 20,
     overflow: 'hidden',
-    borderColor: '#de612b',
+    shadowColor: '#171717',
+    elevation: 5,
   },
 });

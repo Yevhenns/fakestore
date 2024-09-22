@@ -21,8 +21,7 @@ export const AdditionalInfo = React.memo(({item}: AdditionalInfoProps) => {
 
 const styles = StyleSheet.create({
   layout: {
-    display: 'flex',
     gap: 10,
-    backgroundColor: colors.mainBackgroundColor,
+    backgroundColor: colors.whiteColor,
   },
 });

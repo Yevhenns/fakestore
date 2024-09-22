@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     gap: 10,
-    backgroundColor: colors.mainBackgroundColor,
+    backgroundColor: colors.whiteColor,
     overflow: 'hidden',
   },
 

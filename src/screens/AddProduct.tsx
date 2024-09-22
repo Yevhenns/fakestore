@@ -60,7 +60,6 @@ export function AddProduct({navigation}: AddProductProps) {
         validationSchema={AddProductFormSchema}>
         {({
           handleChange,
-          handleBlur,
           handleSubmit,
           setFieldValue,
           values,
@@ -75,7 +74,6 @@ export function AddProduct({navigation}: AddProductProps) {
                 placeholder="Title"
                 value={values.title}
                 onChangeText={handleChange('title')}
-                onBlur={handleBlur('title')}
                 placeholderTextColor={'grey'}
               />
               <View style={styles.errorWrapper}>
@@ -90,7 +88,6 @@ export function AddProduct({navigation}: AddProductProps) {
                 placeholder="Price"
                 value={values.price.toString()}
                 onChangeText={handleChange('price')}
-                onBlur={handleBlur('price')}
                 keyboardType="phone-pad"
                 placeholderTextColor={'grey'}
               />
@@ -106,7 +103,6 @@ export function AddProduct({navigation}: AddProductProps) {
                 placeholder="Description"
                 value={values.description}
                 onChangeText={handleChange('description')}
-                onBlur={handleBlur('description')}
                 placeholderTextColor={'grey'}
                 numberOfLines={5}
                 textAlignVertical="top"

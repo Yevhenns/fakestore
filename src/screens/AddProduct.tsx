@@ -7,7 +7,7 @@ import {Formik} from 'formik';
 import * as Yup from 'yup';
 
 import {categories} from '../assets/categories';
-import {colors} from '../assets/colors';
+import {colors, fonts} from '../assets/styleVariables';
 import {Button} from '../components/Button';
 import {Paragraph} from '../components/Paragraph';
 import {HomeScreenNavigationProp} from '../navigation/HomeStackNavigation';
@@ -168,16 +168,19 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     color: colors.blackColor,
     fontSize: 18,
+    fontFamily: fonts.mainFont,
   },
 
   dropdownPlaceholderStyle: {
     color: colors.greyColor,
     fontSize: 18,
+    fontFamily: fonts.mainFont,
   },
 
   dropdownTextStyle: {
     color: colors.blackColor,
     fontSize: 18,
+    fontFamily: fonts.mainFont,
   },
 
   errorWrapper: {

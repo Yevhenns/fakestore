@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import {colors} from '../assets/colors';
+import {colors} from '../assets/styleVariables';
 import {Paragraph} from './Paragraph';
 
 type AdditionalInfoProps = {item: Product};

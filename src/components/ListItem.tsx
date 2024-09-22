@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 
-import {colors} from '../assets/colors';
+import {colors} from '../assets/styleVariables';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {
   addToFavoriteAction,

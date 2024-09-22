@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 
 import {RouteProp, useRoute} from '@react-navigation/native';
 
-import {colors} from '../assets/colors';
+import {colors} from '../assets/styleVariables';
 import {AdditionalInfo} from '../components/AdditionalInfo';
 import {ListItem} from '../components/ListItem';
 import {RootStackParamList} from '../navigation/HomeStackNavigation';

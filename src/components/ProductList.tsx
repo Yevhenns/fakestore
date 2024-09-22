@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 
-import {colors} from '../assets/colors';
+import {colors} from '../assets/styleVariables';
 import {ListItem} from '../components/ListItem';
 import {DetailsScreenNavigationProp} from '../navigation/HomeStackNavigation';
 import {useAppDispatch} from '../store/hooks';

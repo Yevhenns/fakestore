@@ -2,7 +2,7 @@ import React from 'react';
 import {Text, TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import {StyleSheet} from 'react-native';
 
-import {colors} from '../assets/colors';
+import {colors, fonts} from '../assets/styleVariables';
 
 type ButtonProps = TouchableOpacityProps;
 
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.whiteColor,
     fontSize: 24,
-    fontFamily: 'SofadiOne-Regular',
+    fontFamily: fonts.mainFont,
   },
 });

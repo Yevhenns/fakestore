@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import {colors} from '../assets/colors';
+import {colors} from '../assets/styleVariables';
 import {ModalComponent} from '../components/ModalComponent';
 import {Paragraph} from '../components/Paragraph';
 import {ProductList} from '../components/ProductList';
@@ -25,7 +25,9 @@ export function Favorites({navigation}: FavoritesProps) {
   return (
     <View style={styles.layout}>
       {favoriteProducts.length === 0 ? (
-        <Paragraph>Empty</Paragraph>
+        <View style={styles.emptyContainer}>
+          <Paragraph>Empty</Paragraph>
+        </View>
       ) : (
         <>
           <ProductList
@@ -51,5 +53,11 @@ const styles = StyleSheet.create({
   layout: {
     flex: 1,
     backgroundColor: colors.mainBackgroundColor,
+  },
+
+  emptyContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

@@ -1,7 +1,7 @@
 import React, {PropsWithChildren} from 'react';
 import {StyleSheet, Text} from 'react-native';
 
-import {colors} from '../assets/colors';
+import {colors, fonts} from '../assets/styleVariables';
 
 type ParagraphProps = {
   error?: boolean;
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   layout: {
     color: colors.blackColor,
     fontSize: 18,
-    fontFamily: 'SofadiOne-Regular',
+    fontFamily: fonts.mainFont,
   },
 
   error: {

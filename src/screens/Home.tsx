@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
-import {colors} from '../assets/colors';
+import {colors} from '../assets/styleVariables';
 import {ModalComponent} from '../components/ModalComponent';
 import {Paragraph} from '../components/Paragraph';
 import {ProductList} from '../components/ProductList';

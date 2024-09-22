@@ -3,7 +3,7 @@ import React from 'react';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {colors} from '../assets/colors';
+import {colors, fonts} from '../assets/styleVariables';
 import {Heart} from '../components/icons/Heart';
 import {Home} from '../components/icons/Home';
 import {Plus} from '../components/icons/Plus';
@@ -27,7 +27,7 @@ export function BottomNavigation() {
           tabBarActiveTintColor: colors.whiteColor,
           tabBarInactiveTintColor: colors.blackColor,
           headerTitleStyle: {
-            fontFamily: 'SofadiOne-Regular',
+            fontFamily: fonts.mainFont,
           },
         }}>
         <Tab.Screen

@@ -8,3 +8,7 @@ export const colors = {
   shadowColor: '#171717',
   modalBackgroundColor: 'rgba(255, 255, 255, 0.5)',
 };
+
+export const fonts = {
+  mainFont: 'SofadiOne-Regular',
+};

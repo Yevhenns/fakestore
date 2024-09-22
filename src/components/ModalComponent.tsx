@@ -1,7 +1,7 @@
 import React from 'react';
 import {Modal, StyleSheet, View} from 'react-native';
 
-import {colors} from '../assets/colors';
+import {colors} from '../assets/styleVariables';
 import {useAppDispatch} from '../store/hooks';
 import {deleteProduct} from '../store/products/productsSlice';
 import {Button} from './Button';

@@ -3,6 +3,7 @@ import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/nat
 
 import {createStackNavigator} from '@react-navigation/stack';
 
+import {fonts} from '../assets/styleVariables';
 import {Details} from '../screens/Details';
 import {Favorites} from '../screens/Favorites';
 
@@ -30,7 +31,7 @@ export function FavoriteStackNavigation() {
       screenOptions={{
         headerMode: 'screen',
         headerTitleStyle: {
-          fontFamily: 'SofadiOne-Regular',
+          fontFamily: fonts.mainFont,
         },
       }}>
       <Stack.Screen

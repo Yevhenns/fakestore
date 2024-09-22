@@ -42,8 +42,8 @@ export function AddProduct({navigation}: AddProductProps) {
   };
 
   return (
-    <GestureHandlerRootView style={styles.layout}>
-      <ScrollView>
+    <GestureHandlerRootView>
+      <ScrollView contentContainerStyle={styles.layout}>
         <Formik
           initialValues={{
             title: '',
@@ -138,7 +138,6 @@ export function AddProduct({navigation}: AddProductProps) {
 
 const styles = StyleSheet.create({
   layout: {
-    flex: 1,
     padding: 10,
     gap: 10,
     backgroundColor: colors.mainBackgroundColor,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
 import {RouteProp, useRoute} from '@react-navigation/native';
@@ -26,32 +26,29 @@ export function Details() {
   const {modalToggle, modalVisible} = useModalToggle();
 
   const {selectedProductId, setSelectedProductIdHandler} = useSelectedProduct();
-  console.log(product);
 
   if (!product) {
     return <Empty />;
   }
 
   return (
-    <ScrollView style={styles.layout}>
-      <View style={styles.wrapper}>
-        <ListItem item={product} />
-        <AdditionalInfo item={product} />
-        <Button
-          onPress={() => {
-            setSelectedProductIdHandler(product.id);
-            modalToggle();
-          }}>
-          Delete
-        </Button>
-        {selectedProductId !== null && (
-          <ModalComponent
-            modalVisible={modalVisible}
-            modalToggle={modalToggle}
-            selectedProductId={selectedProductId}
-          />
-        )}
-      </View>
+    <ScrollView contentContainerStyle={styles.layout}>
+      <ListItem item={product} />
+      <AdditionalInfo item={product} />
+      <Button
+        onPress={() => {
+          setSelectedProductIdHandler(product.id);
+          modalToggle();
+        }}>
+        Delete
+      </Button>
+      {selectedProductId !== null && (
+        <ModalComponent
+          modalVisible={modalVisible}
+          modalToggle={modalToggle}
+          selectedProductId={selectedProductId}
+        />
+      )}
     </ScrollView>
   );
 }
@@ -59,11 +56,7 @@ export function Details() {
 const styles = StyleSheet.create({
   layout: {
     gap: 10,
-    display: 'flex',
-    flex: 1,
     padding: 10,
     backgroundColor: colors.whiteColor,
   },
-
-  wrapper: {gap: 10, display: 'flex'},
 });

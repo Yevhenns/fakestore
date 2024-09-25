@@ -46,6 +46,7 @@ export function HomeStackNavigation() {
         component={Details}
         options={{
           title: 'Details',
+          presentation: 'modal',
         }}
       />
     </Stack.Navigator>

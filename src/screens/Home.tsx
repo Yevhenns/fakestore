@@ -51,6 +51,7 @@ export function Home({navigation}: HomeProps) {
         products={productsAll}
         modalToggle={modalToggle}
         setSelectedProductIdHandler={setSelectedProductIdHandler}
+        source="Home"
         navigation={navigation}
       />
       {selectedProductId !== null && (

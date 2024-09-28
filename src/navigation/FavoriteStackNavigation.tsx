@@ -9,11 +9,6 @@ import {Favorites} from '../screens/Favorites';
 
 const Stack = createStackNavigator();
 
-export type RootStackParamList = {
-  Favorites: undefined;
-  Details: {productId: number | string};
-};
-
 export type FavoriteScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Favorites'
@@ -35,7 +30,7 @@ export function FavoriteStackNavigation() {
         },
       }}>
       <Stack.Screen
-        name="FavoriteList"
+        name="Favorites"
         component={Favorites}
         options={{
           title: 'Favorite list',

@@ -9,11 +9,6 @@ import {Home} from '../screens/Home';
 
 const Stack = createStackNavigator();
 
-export type RootStackParamList = {
-  Home: undefined;
-  Details: {productId: number | string};
-};
-
 export type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Home'

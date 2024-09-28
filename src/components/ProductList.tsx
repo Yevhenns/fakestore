@@ -12,6 +12,7 @@ type HomeProps = {
   setSelectedProductIdHandler: (id: number | string) => void;
   navigation: DetailsScreenNavigationProp;
   products: Product[];
+  source: 'Home' | 'Favorites';
 };
 
 export function ProductList({
@@ -19,11 +20,12 @@ export function ProductList({
   modalToggle,
   setSelectedProductIdHandler,
   products,
+  source,
 }: HomeProps) {
   const dispatch = useAppDispatch();
 
   const showDetails = (id: number | string) => {
-    navigation.navigate('Details', {productId: id});
+    navigation.navigate('Details', {productId: id, source});
   };
 
   useEffect(() => {

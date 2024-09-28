@@ -10,3 +10,9 @@ interface Product {
     count: number;
   };
 }
+
+type RootStackParamList = {
+  Home: undefined;
+  Favorites: undefined;
+  Details: {productId: number | string; source?: 'Home' | 'Favorites'};
+};

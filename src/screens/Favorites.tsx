@@ -32,6 +32,7 @@ export function Favorites({navigation}: FavoritesProps) {
             products={favoriteProducts}
             modalToggle={modalToggle}
             setSelectedProductIdHandler={setSelectedProductIdHandler}
+            source="Favorites"
             navigation={navigation}
           />
           {selectedProductId !== null && (

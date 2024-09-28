@@ -4,11 +4,11 @@ import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/nat
 
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 
-import {AdditionalInfo} from '../../components/AdditionalInfo';
-import {Button} from '../../components/Button';
-import {Empty} from '../../components/Empty';
-import {ListItem} from '../../components/ListItem';
-import {ModalComponent} from '../../components/ModalComponent';
+import {AdditionalInfo} from '../../components/AdditionalInfo/AdditionalInfo';
+import {Button} from '../../components/Button/Button';
+import {Empty} from '../../components/Empty/Empty';
+import {ListItem} from '../../components/ListItem/ListItem';
+import {ModalComponent} from '../../components/ModalComponent/ModalComponent';
 import {useModalToggle} from '../../hooks/useModalToggle';
 import {useSelectedProduct} from '../../hooks/useSelectedProduct';
 import {useAppSelector} from '../../store/hooks';

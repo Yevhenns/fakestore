@@ -1,14 +1,14 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 
-import {colors} from '../assets/styleVariables';
-import {Paragraph} from './Paragraph';
+import {Paragraph} from '../Paragraph/Paragraph';
+import {additionalInfoStyles} from './AdditionalInfo.styles';
 
 type AdditionalInfoProps = {item: Product};
 
 export const AdditionalInfo = React.memo(({item}: AdditionalInfoProps) => {
   return (
-    <View style={styles.layout}>
+    <View style={additionalInfoStyles.layout}>
       <Paragraph>{item.description}</Paragraph>
       <Paragraph>Category: {item.category}</Paragraph>
       <View>
@@ -17,11 +17,4 @@ export const AdditionalInfo = React.memo(({item}: AdditionalInfoProps) => {
       </View>
     </View>
   );
-});
-
-const styles = StyleSheet.create({
-  layout: {
-    gap: 10,
-    backgroundColor: colors.whiteColor,
-  },
 });

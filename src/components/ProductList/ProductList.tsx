@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
-import {FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import {FlatList, TouchableOpacity} from 'react-native';
 
-import {colors} from '../assets/styleVariables';
-import {ListItem} from '../components/ListItem';
-import {DetailsScreenNavigationProp} from '../navigation/HomeStackNavigation';
-import {useAppDispatch} from '../store/hooks';
-import {getProducts} from '../store/products/productsOperations';
+import {useAppDispatch} from '../../store/hooks';
+import {getProducts} from '../../store/products/productsOperations';
+import {ListItem} from '../ListItem/ListItem';
+import {productListStyles} from './ProductList.styles';
 
 type HomeProps = {
   modalToggle: () => void;
@@ -39,7 +38,7 @@ export function ProductList({
       data={products}
       renderItem={({item}) => (
         <TouchableOpacity
-          style={styles.listItem}
+          style={productListStyles.listItem}
           onPress={() => showDetails(item.id)}
           onLongPress={() => {
             setSelectedProductIdHandler(item.id);
@@ -49,21 +48,7 @@ export function ProductList({
         </TouchableOpacity>
       )}
       keyExtractor={item => item.id.toString()}
-      contentContainerStyle={styles.list}
+      contentContainerStyle={productListStyles.list}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  list: {
-    gap: 10,
-    padding: 10,
-  },
-
-  listItem: {
-    borderRadius: 20,
-    overflow: 'hidden',
-    shadowColor: colors.shadowColor,
-    elevation: 5,
-  },
-});

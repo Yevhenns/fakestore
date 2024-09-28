@@ -1,9 +1,9 @@
 import React from 'react';
 import {View} from 'react-native';
 
-import {Empty} from '../../components/Empty';
-import {ModalComponent} from '../../components/ModalComponent';
-import {ProductList} from '../../components/ProductList';
+import {Empty} from '../../components/Empty/Empty';
+import {ModalComponent} from '../../components/ModalComponent/ModalComponent';
+import {ProductList} from '../../components/ProductList/ProductList';
 import {useModalToggle} from '../../hooks/useModalToggle';
 import {useSelectedProduct} from '../../hooks/useSelectedProduct';
 import {useAppSelector} from '../../store/hooks';

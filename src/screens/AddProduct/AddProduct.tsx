@@ -7,8 +7,8 @@ import uuid from 'react-native-uuid';
 import {Formik} from 'formik';
 
 import {categories} from '../../assets/categories';
-import {Button} from '../../components/Button';
-import {Paragraph} from '../../components/Paragraph';
+import {Button} from '../../components/Button/Button';
+import {Paragraph} from '../../components/Paragraph/Paragraph';
 import {AddProductFormSchema} from '../../schemas/AddProductFormSchema';
 import {useAppDispatch} from '../../store/hooks';
 import {addProduct} from '../../store/products/productsSlice';

@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {ActivityIndicator, View} from 'react-native';
 
-import {ModalComponent} from '../../components/ModalComponent';
-import {Paragraph} from '../../components/Paragraph';
-import {ProductList} from '../../components/ProductList';
+import {ModalComponent} from '../../components/ModalComponent/ModalComponent';
+import {Paragraph} from '../../components/Paragraph/Paragraph';
+import {ProductList} from '../../components/ProductList/ProductList';
 import {useModalToggle} from '../../hooks/useModalToggle';
 import {useSelectedProduct} from '../../hooks/useSelectedProduct';
 import {useAppDispatch, useAppSelector} from '../../store/hooks';

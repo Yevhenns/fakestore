@@ -16,3 +16,18 @@ type RootStackParamList = {
   Favorites: undefined;
   Details: {productId: number | string; source?: 'Home' | 'Favorites'};
 };
+
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Home'
+>;
+
+type FavoriteScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Favorites'
+>;
+
+type DetailsScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Details'
+>;

@@ -1,5 +1,4 @@
 import React from 'react';
-import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/native-stack/types';
 
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -8,16 +7,6 @@ import {Details} from '../screens/Details/Details';
 import {Favorites} from '../screens/Favorites/Favorites';
 
 const Stack = createStackNavigator();
-
-export type FavoriteScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'Favorites'
->;
-
-export type DetailsScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'Details'
->;
 
 export function FavoriteStackNavigation() {
   return (

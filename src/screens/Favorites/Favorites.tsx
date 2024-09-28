@@ -6,7 +6,6 @@ import {ModalComponent} from '../../components/ModalComponent';
 import {ProductList} from '../../components/ProductList';
 import {useModalToggle} from '../../hooks/useModalToggle';
 import {useSelectedProduct} from '../../hooks/useSelectedProduct';
-import {DetailsScreenNavigationProp} from '../../navigation/HomeStackNavigation';
 import {useAppSelector} from '../../store/hooks';
 import {getFavoriteProducts} from '../../store/products/productsSlice';
 import {favoritesStyles} from './Favorites.styles';

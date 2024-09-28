@@ -9,7 +9,6 @@ import {Formik} from 'formik';
 import {categories} from '../../assets/categories';
 import {Button} from '../../components/Button';
 import {Paragraph} from '../../components/Paragraph';
-import {HomeScreenNavigationProp} from '../../navigation/HomeStackNavigation';
 import {AddProductFormSchema} from '../../schemas/AddProductFormSchema';
 import {useAppDispatch} from '../../store/hooks';
 import {addProduct} from '../../store/products/productsSlice';

@@ -1,19 +1,19 @@
 import React from 'react';
-import {GestureResponderEvent, StyleSheet, TextInput, View} from 'react-native';
+import {GestureResponderEvent, TextInput, View} from 'react-native';
 import {Dropdown} from 'react-native-element-dropdown';
 import {GestureHandlerRootView, ScrollView} from 'react-native-gesture-handler';
 import uuid from 'react-native-uuid';
 
 import {Formik} from 'formik';
 
-import {categories} from '../assets/categories';
-import {colors, fonts} from '../assets/styleVariables';
-import {Button} from '../components/Button';
-import {Paragraph} from '../components/Paragraph';
-import {HomeScreenNavigationProp} from '../navigation/HomeStackNavigation';
-import {AddProductFormSchema} from '../schemas/AddProductFormSchema';
-import {useAppDispatch} from '../store/hooks';
-import {addProduct} from '../store/products/productsSlice';
+import {categories} from '../../assets/categories';
+import {Button} from '../../components/Button';
+import {Paragraph} from '../../components/Paragraph';
+import {HomeScreenNavigationProp} from '../../navigation/HomeStackNavigation';
+import {AddProductFormSchema} from '../../schemas/AddProductFormSchema';
+import {useAppDispatch} from '../../store/hooks';
+import {addProduct} from '../../store/products/productsSlice';
+import {addProductStyles} from './AddProduct.styles';
 
 type AddProductProps = {
   navigation: HomeScreenNavigationProp;
@@ -43,7 +43,7 @@ export function AddProduct({navigation}: AddProductProps) {
 
   return (
     <GestureHandlerRootView>
-      <ScrollView contentContainerStyle={styles.layout}>
+      <ScrollView contentContainerStyle={addProductStyles.layout}>
         <Formik
           initialValues={{
             title: '',
@@ -65,32 +65,32 @@ export function AddProduct({navigation}: AddProductProps) {
               <View>
                 <Paragraph>Title</Paragraph>
                 <TextInput
-                  style={styles.input}
+                  style={addProductStyles.input}
                   placeholder="Title"
                   value={values.title}
                   onChangeText={handleChange('title')}
                   placeholderTextColor={'grey'}
                 />
-                <View style={styles.errorWrapper}>
+                <View style={addProductStyles.errorWrapper}>
                   {errors.title && <Paragraph error>{errors.title}</Paragraph>}
                 </View>
 
                 <Paragraph>Price</Paragraph>
                 <TextInput
-                  style={styles.input}
+                  style={addProductStyles.input}
                   placeholder="Price"
                   value={values.price.toString()}
                   onChangeText={handleChange('price')}
                   keyboardType="phone-pad"
                   placeholderTextColor={'grey'}
                 />
-                <View style={styles.errorWrapper}>
+                <View style={addProductStyles.errorWrapper}>
                   {errors.price && <Paragraph error>{errors.price}</Paragraph>}
                 </View>
 
                 <Paragraph>Description</Paragraph>
                 <TextInput
-                  style={styles.input}
+                  style={addProductStyles.input}
                   placeholder="Description"
                   value={values.description}
                   onChangeText={handleChange('description')}
@@ -98,7 +98,7 @@ export function AddProduct({navigation}: AddProductProps) {
                   numberOfLines={5}
                   textAlignVertical="top"
                 />
-                <View style={styles.errorWrapper}>
+                <View style={addProductStyles.errorWrapper}>
                   {errors.description && (
                     <Paragraph error>{errors.description}</Paragraph>
                   )}
@@ -106,18 +106,18 @@ export function AddProduct({navigation}: AddProductProps) {
 
                 <Paragraph>Category</Paragraph>
                 <Dropdown
-                  style={styles.input}
+                  style={addProductStyles.input}
                   data={categories}
                   onChange={item => setFieldValue('category', item.value)}
                   labelField="label"
                   valueField="value"
                   value={values.category}
                   placeholder="Select category"
-                  placeholderStyle={styles.dropdownPlaceholderStyle}
-                  itemTextStyle={styles.dropdownTextStyle}
-                  selectedTextStyle={styles.dropdownTextStyle}
+                  placeholderStyle={addProductStyles.dropdownPlaceholderStyle}
+                  itemTextStyle={addProductStyles.dropdownTextStyle}
+                  selectedTextStyle={addProductStyles.dropdownTextStyle}
                 />
-                <View style={styles.errorWrapper}>
+                <View style={addProductStyles.errorWrapper}>
                   {errors.category && (
                     <Paragraph error>{errors.category}</Paragraph>
                   )}
@@ -135,38 +135,3 @@ export function AddProduct({navigation}: AddProductProps) {
     </GestureHandlerRootView>
   );
 }
-
-const styles = StyleSheet.create({
-  layout: {
-    padding: 10,
-    gap: 10,
-    backgroundColor: colors.mainBackgroundColor,
-  },
-
-  input: {
-    width: '100%',
-    padding: 12,
-    borderRadius: 5,
-    borderColor: colors.accentColor,
-    borderWidth: 2,
-    color: colors.blackColor,
-    fontSize: 18,
-    fontFamily: fonts.mainFont,
-  },
-
-  dropdownPlaceholderStyle: {
-    color: colors.greyColor,
-    fontSize: 18,
-    fontFamily: fonts.mainFont,
-  },
-
-  dropdownTextStyle: {
-    color: colors.blackColor,
-    fontSize: 18,
-    fontFamily: fonts.mainFont,
-  },
-
-  errorWrapper: {
-    height: 20,
-  },
-});

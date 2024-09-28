@@ -1,20 +1,19 @@
 import React, {useEffect} from 'react';
-import {StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/native-stack/types';
 
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 
-import {colors} from '../assets/styleVariables';
-import {AdditionalInfo} from '../components/AdditionalInfo';
-import {Button} from '../components/Button';
-import {Empty} from '../components/Empty';
-import {ListItem} from '../components/ListItem';
-import {ModalComponent} from '../components/ModalComponent';
-import {useModalToggle} from '../hooks/useModalToggle';
-import {useSelectedProduct} from '../hooks/useSelectedProduct';
-import {useAppSelector} from '../store/hooks';
-import {getProductsAll} from '../store/products/productsSlice';
+import {AdditionalInfo} from '../../components/AdditionalInfo';
+import {Button} from '../../components/Button';
+import {Empty} from '../../components/Empty';
+import {ListItem} from '../../components/ListItem';
+import {ModalComponent} from '../../components/ModalComponent';
+import {useModalToggle} from '../../hooks/useModalToggle';
+import {useSelectedProduct} from '../../hooks/useSelectedProduct';
+import {useAppSelector} from '../../store/hooks';
+import {getProductsAll} from '../../store/products/productsSlice';
+import {detailsStyles} from './Details.styles';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -41,7 +40,7 @@ export function Details() {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.layout}>
+    <ScrollView contentContainerStyle={detailsStyles.layout}>
       <ListItem item={product} />
       <AdditionalInfo item={product} />
       <Button
@@ -61,11 +60,3 @@ export function Details() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  layout: {
-    gap: 10,
-    padding: 10,
-    backgroundColor: colors.whiteColor,
-  },
-});

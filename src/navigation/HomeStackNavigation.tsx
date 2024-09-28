@@ -4,8 +4,8 @@ import {NativeStackNavigationProp} from 'react-native-screens/lib/typescript/nat
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {fonts} from '../assets/styleVariables';
-import {Details} from '../screens/Details';
-import {Home} from '../screens/Home';
+import {Details} from '../screens/Details/Details';
+import {Home} from '../screens/Home/Home';
 
 const Stack = createStackNavigator();
 

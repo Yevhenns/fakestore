@@ -7,7 +7,7 @@ import {colors, fonts} from '../assets/styleVariables';
 import {Heart} from '../components/icons/Heart';
 import {Home} from '../components/icons/Home';
 import {Plus} from '../components/icons/Plus';
-import {AddProduct} from '../screens/AddProduct';
+import {AddProduct} from '../screens/AddProduct/AddProduct';
 import {useAppSelector} from '../store/hooks';
 import {getFavoriteProducts} from '../store/products/productsSlice';
 import {FavoriteStackNavigation} from './FavoriteStackNavigation';

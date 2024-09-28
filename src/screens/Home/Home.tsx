@@ -1,20 +1,20 @@
 import React, {useEffect} from 'react';
-import {ActivityIndicator, StyleSheet, View} from 'react-native';
+import {ActivityIndicator, View} from 'react-native';
 
-import {colors} from '../assets/styleVariables';
-import {ModalComponent} from '../components/ModalComponent';
-import {Paragraph} from '../components/Paragraph';
-import {ProductList} from '../components/ProductList';
-import {useModalToggle} from '../hooks/useModalToggle';
-import {useSelectedProduct} from '../hooks/useSelectedProduct';
-import {DetailsScreenNavigationProp} from '../navigation/HomeStackNavigation';
-import {useAppDispatch, useAppSelector} from '../store/hooks';
-import {getProducts} from '../store/products/productsOperations';
+import {ModalComponent} from '../../components/ModalComponent';
+import {Paragraph} from '../../components/Paragraph';
+import {ProductList} from '../../components/ProductList';
+import {useModalToggle} from '../../hooks/useModalToggle';
+import {useSelectedProduct} from '../../hooks/useSelectedProduct';
+import {DetailsScreenNavigationProp} from '../../navigation/HomeStackNavigation';
+import {useAppDispatch, useAppSelector} from '../../store/hooks';
+import {getProducts} from '../../store/products/productsOperations';
 import {
   getError,
   getIsLoading,
   getProductsAll,
-} from '../store/products/productsSlice';
+} from '../../store/products/productsSlice';
+import {homeStyles} from './Home.styles';
 
 type HomeProps = {
   navigation: DetailsScreenNavigationProp;
@@ -46,7 +46,7 @@ export function Home({navigation}: HomeProps) {
   }
 
   return (
-    <View style={styles.layout}>
+    <View style={homeStyles.layout}>
       <ProductList
         products={productsAll}
         modalToggle={modalToggle}
@@ -64,10 +64,3 @@ export function Home({navigation}: HomeProps) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  layout: {
-    flex: 1,
-    backgroundColor: colors.mainBackgroundColor,
-  },
-});

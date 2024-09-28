@@ -1,15 +1,15 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 
-import {colors} from '../assets/styleVariables';
-import {Empty} from '../components/Empty';
-import {ModalComponent} from '../components/ModalComponent';
-import {ProductList} from '../components/ProductList';
-import {useModalToggle} from '../hooks/useModalToggle';
-import {useSelectedProduct} from '../hooks/useSelectedProduct';
-import {DetailsScreenNavigationProp} from '../navigation/HomeStackNavigation';
-import {useAppSelector} from '../store/hooks';
-import {getFavoriteProducts} from '../store/products/productsSlice';
+import {Empty} from '../../components/Empty';
+import {ModalComponent} from '../../components/ModalComponent';
+import {ProductList} from '../../components/ProductList';
+import {useModalToggle} from '../../hooks/useModalToggle';
+import {useSelectedProduct} from '../../hooks/useSelectedProduct';
+import {DetailsScreenNavigationProp} from '../../navigation/HomeStackNavigation';
+import {useAppSelector} from '../../store/hooks';
+import {getFavoriteProducts} from '../../store/products/productsSlice';
+import {favoritesStyles} from './Favorites.styles';
 
 type FavoritesProps = {
   navigation: DetailsScreenNavigationProp;
@@ -23,7 +23,7 @@ export function Favorites({navigation}: FavoritesProps) {
   const {selectedProductId, setSelectedProductIdHandler} = useSelectedProduct();
 
   return (
-    <View style={styles.layout}>
+    <View style={favoritesStyles.layout}>
       {favoriteProducts.length === 0 ? (
         <Empty />
       ) : (
@@ -47,16 +47,3 @@ export function Favorites({navigation}: FavoritesProps) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  layout: {
-    flex: 1,
-    backgroundColor: colors.mainBackgroundColor,
-  },
-
-  emptyContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
